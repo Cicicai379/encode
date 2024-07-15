@@ -27,7 +27,11 @@ public class BoardController {
         List<UserInfo> users = userinfoService.getAllUserInfo();
         PageInfo<UserInfo> pageInfo = new PageInfo<UserInfo>(users, size);
         model.addAttribute("pageInfo", pageInfo);
-        return "leaderboard";
+        return "leaderboard2";
+    }
+    @RequestMapping(value = "/leaderboard2", method = RequestMethod.GET)
+    public String list( Model model) {
+        return "leaderboard2";
     }
 }
 

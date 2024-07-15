@@ -87,60 +87,12 @@ public class AdminController {
         return "admin/edit";
     }
 
-    @PostMapping("/admin/edit")
-    public String handleFileUpload(@ModelAttribute("ProblemForm") ProblemForm problemInfo,
-                                   @RequestParam(required=false,value="id") int id,
-                                   @Validated UserForm editUser,
-                                   HttpServletRequest request,
-                                   BindingResult rs,
-                                   Model model) {
-        if (rs.hasErrors()) {
-            return "admin/edit";
-        }
-        if(problemInfo.getTime().isEmpty()){
-            problemInfo.setTime("2023-02-25 03:07:09.530");
-        }
-        UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
-        HttpSession session = request.getSession();
-        session.setAttribute("login_user", user);
-
-        Problem problem = problemService.getProblem(id);
-        model.addAttribute("problemId",id);
-        Problem newProblem = new Problem();
-
-
-        if (editUser!=null) {
-            newProblem.setTitle(problemInfo.getTitle());
-            newProblem.setProblem(problemInfo.getProblem());
-            newProblem.setAnswer(problemInfo.getAnswer());
-            newProblem.setCategory(problemInfo.getCategory());
-            newProblem.setDifficulty(problemInfo.getDifficulty());
-            newProblem.setInput(problemInfo.getInput());
-            newProblem.setProblemId(id);
-            newProblem.setTime(problemInfo.getTime());
-        }
-        logger.info("newuser "+newProblem.getInput());
-        if (adminService.changeAllProblemInfo(newProblem)) {
-            problemInfo.setTitle(newProblem.getTitle());
-            problemInfo.setProblem(newProblem.getProblem());
-            problemInfo.setAnswer(newProblem.getAnswer());
-            problemInfo.setCategory(newProblem.getCategory());
-            problemInfo.setDifficulty(newProblem.getDifficulty());
-            problemInfo.setTime(newProblem.getTime());
-            session.setAttribute("problem", newProblem);
-            model.addAttribute("msg", "reset success");
-        } else {
-            model.addAttribute("msg", "reset failed");
-        }
-
-        return "admin/edit";
-    }
 
 
 
     @RequestMapping("/check_title")
     @ResponseBody
-    public String checkUserNameR(@RequestParam(value = "title") String title, HttpServletRequest request) {
+    public String checkUserName(@RequestParam(value = "title") String title, HttpServletRequest request) {
         logger.info(title+"!!title");
         Problem problem = problemService.getProblemByName(title);
         if((problem != null)){

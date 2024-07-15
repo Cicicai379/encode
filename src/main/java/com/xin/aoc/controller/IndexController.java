@@ -52,6 +52,10 @@ public class IndexController {
 
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("statusInfo", statusInfo);
-        return "index";
+        return "index2";
+    }
+    @RequestMapping(value = "/home")
+    public String search() {
+        return "index2";
     }
 }

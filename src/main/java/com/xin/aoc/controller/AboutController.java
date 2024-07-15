@@ -21,14 +21,9 @@ import java.util.List;
 
 @Controller
 public class AboutController {
-    @Autowired
-    private ProblemService problemService;
-    @Autowired
-    private RecordService recordService;
 
     @RequestMapping(value = "/about")
-    public String list(Model model, HttpServletRequest request) {
-
-        return "about";
+    public String showAbout(Model model, HttpServletRequest request) {
+        return "about2";
     }
 }

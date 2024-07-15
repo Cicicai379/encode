@@ -62,7 +62,7 @@ public class LearnController {
 
         PageInfo<Learn> pageInfo = new PageInfo<Learn>(learns, size);
         model.addAttribute("pageInfo", pageInfo);
-        return "learn";
+        return "learn2";
     }
 
 
@@ -72,7 +72,7 @@ public class LearnController {
             @RequestParam(required = false, value="id") int learnId) {
         Learn learn = learnMapper.getLearnById(learnId);
         model.addAttribute(learn);
-        return "read";
+        return "read2";
     }
 
     @GetMapping(value = "/admin/write")

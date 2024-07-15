@@ -46,7 +46,7 @@ public class CodingController {
 
     @GetMapping(value="/coding")
     public String add(){
-        return "coding";
+        return "coding2";
     }
 
     @PostMapping(value="/coding")
@@ -75,6 +75,6 @@ public class CodingController {
         model.addAttribute("msg", output);
         model.addAttribute("code", code);
         model.addAttribute("input", input);
-        return "coding";
+        return "coding2";
     }
 }

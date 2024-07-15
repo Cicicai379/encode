@@ -59,11 +59,18 @@ public class UserController {
     private ContestMapper contestMapper;
     @Autowired
     private RecordMapper recordMapper;
+    @RequestMapping("/login2")
+    public String login() {
+        return "login2";
+    }
 
     @RequestMapping("/login")
     public String login(@RequestParam(required=false,value="username") String username,
                         @RequestParam(required=false,value="password") String password,
                         HttpServletRequest request) {
+        System.out.println("username: "+username);
+        System.out.println("password: "+password);
+
         if (username != null && password != null) {
             password = getPasswordMd5(password);
             UserInfo userInfo = userInfoService.getUserInfo(username);
@@ -73,9 +80,10 @@ public class UserController {
                 session.setAttribute("login_user", userInfo);
                 return "redirect:/";
             }
-            request.setAttribute("msg", "incorrect username or password");
+            request.setAttribute("msg", "Name or password incorrect");
         }
-        return "login";
+//        request.setAttribute("msg", "invalid username or password");
+        return "login2";
     }
 
 
@@ -85,23 +93,28 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/register2")
+    public String register2(@ModelAttribute("obj") UserForm user) {
+        return "register2";
+    }
     @GetMapping("/register")
     public String register(@ModelAttribute("obj") UserForm user) {
-        return "register";
+        return "register2";
     }
+
 
     @PostMapping("/register")
     public String register(@ModelAttribute("obj") @Validated UserForm user,
                            BindingResult rs, HttpServletRequest request, Model model) {
         if (rs.hasErrors()) {
-            return "register";
+            return "register2";
         }
         String code = (String)request.getSession().getAttribute(CHECK_CODE);
         request.getSession().removeAttribute(CHECK_CODE);
         logger.info(code + " " +user.getCheckCode());
         if (code == null || !code.equals(user.getCheckCode())) {
             model.addAttribute("msg", "verification code not match");
-            return "register";
+            return "register2";
         }
 
         UserInfo userInfo = new UserInfo();
@@ -130,6 +143,7 @@ public class UserController {
             int number = random.nextInt(str.length() - 1);
             code.append(str.charAt(number));
         }
+        logger.info(String.valueOf(code));
         return code.toString();
     }
 
@@ -171,7 +185,6 @@ public class UserController {
     @ResponseBody
     public String checkUserNameR(@RequestParam(value = "userName") String userName, HttpServletRequest request) {
         UserInfo userInfo = userInfoService.getUserInfo(userName);
-
         if((userInfo != null)){
             logger.info("exist!");
             return "exist";
@@ -189,21 +202,23 @@ public class UserController {
 
     @GetMapping("/forget_password")
     public String forget_password(@ModelAttribute("obj") UserForm user) {
-        return "forget_password";
+        return "forget_password2";
     }
+
+
 
     @PostMapping("/forget_password")
     public String forget_password(@ModelAttribute("obj") @Validated UserForm user,
                            BindingResult rs, HttpServletRequest request, Model model) {
         if (rs.hasErrors()) {
-            return "register";
+            return "forget_password2";
         }
         String code = (String)request.getSession().getAttribute(CHECK_CODE);
         request.getSession().removeAttribute(CHECK_CODE);
         logger.info(code + " " +user.getCheckCode());
         if (code == null || !code.equals(user.getCheckCode())) {
             model.addAttribute("msg", "verification code not match");
-            return "forget_password";
+            return "forget_password2";
         }
 
         UserInfo userInfo = new UserInfo();

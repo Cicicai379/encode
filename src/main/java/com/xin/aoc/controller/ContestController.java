@@ -279,7 +279,7 @@ public class ContestController {
     }
 
     @GetMapping(value="/user/submit_contest")
-    public String sub(
+    public String submit(
             @RequestParam(required=false,value="id") int problemId,
             @RequestParam(required=false,value="msg") String msg,
             @RequestParam(required=false,value="result") String result,
