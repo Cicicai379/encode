@@ -14,6 +14,10 @@ public interface ProblemMapper {
     Problem getProblemById(int id);
 
     @Select("select * from problems where problem_id=#{id}")
+    Problem getContestProblemById(int id);
+
+
+    @Select("select * from problems where problem_id=#{id}")
     Problem getProblemByIdAndContest(int id);
 
 

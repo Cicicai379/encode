@@ -104,21 +104,13 @@
                 <input type="hidden" id="id" name="id" th:value="${problemInfo.problemId}"/>
                 <input type="hidden" id="cur_date" name="cur_date" th:value="${discussion.curDate}"/>
                 <input type="hidden" id="user_id" name="user_id" th:value="${discussion.userId}"/>
-<!--                <button  type="submit"  onclick="confirm()">del</button>-->
                 <input th:if="${session.login_user != null} and ${discussion.userId == session.login_user.userId}" onclick="return confirm('Do you want to delete your post?')"
                        style="position: absolute;  right: 20px; bottom:18px;" type="image" src=  "/delete.png"
                        height="16px" width="16px"
                        alt="submit" />
-<!--                <button th:if="${session.login_user != null && session.login_user.userId==discussion.userId}"  type="submit"  id="del" class="btn btn-primary mb-1" style="width:16px; height:16px; background-color: transparent;  border: none;">-->
-<!--&lt;!&ndash;                  <img src="/delete.png" width="16" height="16">&ndash;&gt;-->
-<!--                </button>-->
-
               </form>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </div>

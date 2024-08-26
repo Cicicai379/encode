@@ -77,7 +77,7 @@ public class LearnController {
 
     @GetMapping(value = "/admin/write")
     public String discuss(@ModelAttribute("LearnForm") LearnForm learn) {
-        return "admin/write";
+        return "admin/write2";
     }
 
 @PostMapping(value="/admin/write")
@@ -89,7 +89,7 @@ public String add(@ModelAttribute("LearnForm") @Validated LearnForm learn,
             for (ObjectError error : rs.getAllErrors()) {
                 System.out.println(error.getDefaultMessage());
             }
-            return "admin/write";
+            return "admin/write2";
         }
         Learn newlearn=new Learn();
         String time=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -105,9 +105,12 @@ public String add(@ModelAttribute("LearnForm") @Validated LearnForm learn,
         newlearn.setImage(user.getImage());
         learnMapper.addLearn(newlearn);
 
+        logger.info("Title: "+learn.getTitle()+"Content: "+learn.getContent()+"Difficulty: " +
+                learn.getDifficulty()+"Category: "+learn.getCategory());
+
         return "redirect:/learn";
     }
-    return "admin/write";
+    return "admin/write2";
 }
 
 
@@ -130,7 +133,7 @@ public String add(@ModelAttribute("LearnForm") @Validated LearnForm learn,
         session.setAttribute("learn", learn);
         session.setAttribute("login_user", user);
 
-        return "admin/edit_learn";
+        return "admin/edit_learn2";
     }
 
     @PostMapping("/admin/edit_learn")
@@ -141,7 +144,7 @@ public String add(@ModelAttribute("LearnForm") @Validated LearnForm learn,
                                    BindingResult rs,
                                    Model model) {
         if (rs.hasErrors()) {
-            return "admin/edit_learn";
+            return "admin/edit_learn2";
         }
 
         UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
@@ -177,7 +180,7 @@ public String add(@ModelAttribute("LearnForm") @Validated LearnForm learn,
         }
 
 
-        return "admin/edit_learn";
+        return "admin/edit_learn2";
     }
 
     @PostMapping("/admin/delete_learn")

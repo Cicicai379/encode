@@ -30,10 +30,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,21 +74,22 @@ public class ContestController {
 
         PageInfo<Contest> pageInfo = new PageInfo<Contest>(contests, size);
         model.addAttribute("pageInfo", pageInfo);
-        return "contest/contests";
+        return "contest/contests2";
     }
 
 
     @GetMapping(value = "/contest")
-    public String discuss(
+    public String contest(
             Model model, HttpServletRequest request,
             @RequestParam(required = false, value="id") int contestId) {
-
+        System.out.println("!!!!!"+contestId);
         UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
         HttpSession session = request.getSession();
         if(user!=null && contestMapper.contestHasStarted(contestId)!=1 && user.getIsAdmin()!=1){
             return "redirect:/contests";
         }
         Contest contest = contestMapper.getAllContestById(contestId);
+        System.out.println("!!!!!"+contest);
         model.addAttribute("contest",contest);
         model.addAttribute("contestId",contestId);
 
@@ -120,7 +118,7 @@ public class ContestController {
         model.addAttribute("statusInfo", statusInfo);
         model.addAttribute("timeLeft", timeLeft);
 
-        return "contest/contest";
+        return "contest/contest2";
     }
 
     @PostMapping(value = "user/start_contest")
@@ -149,26 +147,28 @@ public class ContestController {
 
     @GetMapping(value = "/admin/upload_contest")
     public String discuss(@ModelAttribute("ContestForm") ContestForm contest) {
-        return "contest/upload";
+        return "contest/upload2";
     }
 
     @PostMapping(value="/admin/upload_contest")
     public String add(@ModelAttribute("ContestForm") @Validated ContestForm contest,
                       BindingResult rs, HttpServletRequest request){
-
         if (contest.getContent() != null && contest.getTitle()  != null) {
             if (rs.hasErrors()) {
                 for (ObjectError error : rs.getAllErrors()) {
                     System.out.println(error.getDefaultMessage());
                 }
-                return  "contest/upload";
+                return  "contest/upload2";
             }
             String time=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
             UserInfo user = (UserInfo) request.getSession().getAttribute("login_user");
             contestMapper.addContest(contest);
+
+            logger.info("Contest: "+contest.getTitle()+"Details: "+contest.getContent()+"Duration: " +
+                    ""+contest.getDuration()+"Date: "+contest.getStart());
             return "redirect:/contests";
         }
-        return  "contest/upload";
+        return  "contest/upload2";
     }
 
 
@@ -190,7 +190,7 @@ public class ContestController {
         session.setAttribute("contest", contest);
         session.setAttribute("login_user", user);
 
-        return "contest/edit";
+        return "contest/edit2";
     }
 
     @PostMapping("/admin/edit_contest")
@@ -200,8 +200,13 @@ public class ContestController {
                                    HttpServletRequest request,
                                    BindingResult rs,
                                    Model model) {
+        logger.info("edit_contest post");
         if (rs.hasErrors()) {
-            return "contest/edit";
+            logger.info("rs error");
+            for (ObjectError error : rs.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
+            }
+            return "contest/edit2?id="+id;
         }
 
         UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
@@ -210,52 +215,50 @@ public class ContestController {
         HttpSession session = request.getSession();
         session.setAttribute("login_user", user);
         logger.info(contest.getTitle()+"new contest title!");
-//        Learn oldlearn = learnMapper.getLearnById(id);
-            contest.setContestId(id);
-            contestMapper.changeAllContestInfo(contest);
-            model.addAttribute("msg", "reset success");
-            return "redirect:/contests";
-
-
+        contest.setContestId(id);
+        contestMapper.changeAllContestInfo(contest);
+        model.addAttribute("msg", "reset success");
+        return "redirect:/contests";
 
     }
 
     @PostMapping("/admin/delete_contest")
     public String del(@RequestParam(value = "id") int contestId, HttpServletRequest request, Model model) {
-
+        System.out.println("del start");
         contestMapper.delById(contestId);
         logger.info("11"+String.valueOf(contestId));
         model.addAttribute("del", "delete successful");
-
+System.out.println("!!!!!");
         return "redirect:/contests";
     }
 
     @GetMapping(value="/admin/upload_contest_problem")
     public String upload( @RequestParam(value = "id") int contestId, @ModelAttribute("ProblemForm") ProblemForm problem, Model model){
         model.addAttribute("contestId",contestId);
-        return "contest/upload_problem";
+        Contest contest = contestMapper.getAllContestById(contestId);
+        model.addAttribute("contest",contest);
+        return "contest/upload_problem2";
     }
 
     @PostMapping(value="/admin/upload_contest_problem")
     public String add(@ModelAttribute("ProblemForm") @Validated ProblemForm problem,
                       BindingResult rs,  @RequestParam(value = "id") int contestId){
-
-            Contest contest = contestMapper.getAllContestById(contestId);
-            problem.setTime(contest.getStop());
-            problem.setContestId(contestId);
+        Contest contest = contestMapper.getAllContestById(contestId);
+        problem.setTime(contest.getStop());
+        problem.setContestId(contestId);
 
         if (problem.getProblem() != null && problem.getTitle()  != null) {
             if (rs.hasErrors()) {
                 for (ObjectError error : rs.getAllErrors()) {
                     System.out.println(error.getDefaultMessage());
                 }
-                return "contest/upload_problem";
+                return "contest/upload_problem2";
             }
 
             adminService.addProblem(problem);
             return "redirect:/contest?id="+contestId;
         }
-        return "contest/upload_problem";
+        return "contest/upload_problem2";
     }
 
 
@@ -275,7 +278,19 @@ public class ContestController {
         logger.info(problem.getProblemId()+"id!!");
         model.addAttribute("contestId",contestId);
         model.addAttribute("problemInfo", problem);
-        return "contest/contest_problem";
+
+        // handle submission column display
+        List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),id);
+        submissions = submissions.subList(0, Math.min(3, submissions.size()));
+
+        // handle submission column display
+//        List<Submission> submissions = new LinkedList<>(submissionService.getSubmissionsByUserId(user.getUserId(), id));
+//        submissions = submissions.subList(0, Math.min(3, submissions.size()));
+
+        logger.info(submissions.toString()+"!!!!");
+        PageInfo<Submission> subInfo = new PageInfo<Submission>(submissions);
+        model.addAttribute("submissions", subInfo);
+        return "contest/contest_problem2";
     }
 
     @GetMapping(value="/user/submit_contest")
@@ -311,7 +326,14 @@ public class ContestController {
         model.addAttribute("msg", msg);
         model.addAttribute("contestId",contestId);
 
-        return "contest/contest_submit";
+        // handle submission column display
+        List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),problemId);
+        submissions = submissions.subList(0, Math.min(3, submissions.size()));
+        logger.info(submissions.toString()+"!!!!");
+        PageInfo<Submission> subInfo = new PageInfo<Submission>(submissions);
+        model.addAttribute("submissions", subInfo);
+
+        return "contest/contest_submit2";
     }
 
     @RequestMapping(value = "/user/submission_contest")
@@ -330,7 +352,7 @@ public class ContestController {
         Problem problem = problemMapper.getProblemByIdAndContest(problemId);
         model.addAttribute("problemInfo", problem);
         if (page == null || page <= 0) page = 1;
-        int size = 8;
+        int size = 5;
         PageHelper.startPage(page, size);
 
         List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),problemId);
@@ -338,7 +360,7 @@ public class ContestController {
         PageInfo<Submission> pageInfo = new PageInfo<Submission>(submissions, size);
         model.addAttribute("submissions", pageInfo);
         model.addAttribute("contestId",contestId);
-        return "contest/contest_submission";
+        return "contest/contest_submission2";
     }
     @PostMapping(value="/user/submit_contest")
     public String submit(@RequestParam(value="file") MultipartFile file,
@@ -417,7 +439,14 @@ public class ContestController {
         model.addAttribute("result",result);
         model.addAttribute("lastSubmission",code);
         submissionService.update(problem.getProblemId(),user.getUserId(), code, time, status, problem.getTitle());
-        return "contest/contest_submit";
+
+        // handle submission column display
+        List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),id);
+        submissions = submissions.subList(0, Math.min(3, submissions.size()));
+        logger.info(submissions.toString()+"!!!!");
+        PageInfo<Submission> subInfo = new PageInfo<Submission>(submissions);
+        model.addAttribute("submissions", subInfo);
+        return "contest/contest_submit2";
     }
     @RequestMapping(value = "/user/code_contest")
     public String codes(
@@ -439,7 +468,7 @@ public class ContestController {
         model.addAttribute("problemInfo", problem);
         model.addAttribute("contestId",contestId);
 
-        return "contest/contest_code";
+        return "contest/contest_code2";
     }
 
 
@@ -459,7 +488,7 @@ public class ContestController {
 
         PageInfo<Contest> pageInfo = new PageInfo<Contest>(contests, size);
         model.addAttribute("pageInfo", pageInfo);
-        return "contest/contests";
+        return "contest/all_contests2";
     }
 
     @RequestMapping("/check_started")

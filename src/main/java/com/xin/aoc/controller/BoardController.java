@@ -25,8 +25,12 @@ public class BoardController {
         PageHelper.startPage(page, size);//分页
 
         List<UserInfo> users = userinfoService.getAllUserInfo();
-        PageInfo<UserInfo> pageInfo = new PageInfo<UserInfo>(users, size);
+        PageInfo<UserInfo> pageInfo = new PageInfo<>(users, size);
         model.addAttribute("pageInfo", pageInfo);
+
+        for (UserInfo user : users) {
+            System.out.println("User " + user.getUserId() + " has a score of: " + user.getScore());
+        }
         return "leaderboard2";
     }
     @RequestMapping(value = "/leaderboard2", method = RequestMethod.GET)

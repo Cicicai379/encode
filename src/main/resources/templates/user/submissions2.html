@@ -3,7 +3,7 @@
 
 
   <head>
-    <title>About</title>
+    <title>Submissions</title>
     <style data-styled="active" data-styled-version="5.3.8">
      a:link {
       text-decoration: none;
@@ -20,22 +20,22 @@
     @font-face {
       font-family: 'Fira Code';
       font-weight: 700;
-      src: url('FiraCode-Bold.ttf') format('truetype');
+      src: url('/FiraCode-Bold.ttf') format('truetype');
     }
     @font-face {
       font-family: 'Fira Code';
       font-weight: 600;
-      src: url('FiraCode-SemiBold.ttf') format('truetype');
+      src: url('/FiraCode-SemiBold.ttf') format('truetype');
     }
      @font-face {
       font-family: 'Fira Code';
       font-weight: 400;
-      src: url('FiraCode-Regular.ttf') format('truetype');
+      src: url('/FiraCode-Regular.ttf') format('truetype');
     }
     @font-face {
       font-family: 'Fira Code';
       font-weight: 300;
-      src: url('FiraCode-Light.ttf') format('truetype');
+      src: url('/FiraCode-Light.ttf') format('truetype');
     }
     </style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style>
     <script>
@@ -92,7 +92,7 @@ function toggleDropdown() {
 <div style="width: 100%; height: 100%; background: white">
 
   <!-- nav bar and footer -->
-  <div style="width: 1442px; height: 75px; left: 0px; top: 994px; position: absolute">
+  <div style="width: 100%; height: 75px; left: 0px; top: 2294px; position: absolute">
     <div style="width: 1442px; height: 75px; left: 0px; top: 0px; position: absolute; background: #202322"></div>
     <a href="/" style="width: 78.11px; height: 24px; left: 1258.75px; top: 25px; position: absolute; text-align: center; color: white; font-size: 15px; font-family: Fira Code; font-weight: 700; line-height: 24px; word-wrap: break-word">Encode</a>
     <a href="/help" style="width: 34.05px; left: 140.19px; top: 25px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word">Help</a>
@@ -121,19 +121,22 @@ function toggleDropdown() {
       <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
       <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
       <a  href="/coding" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Coding</a>
+      <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
       <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
-      <div style="width: 190px; height: 52px; left: 1151px; top: 6px; position: absolute; background: #EFEFEF"></div>
       <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
     </div>
     <div th:if="${session.login_user != null && session.login_user.isAdmin != 0}">
       <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
         <a href="/" style="width: 1440px; height: 52.13px; left: 0px; top: 4.92px; position: absolute; background: white; border-top: 1px #767676 solid; border-bottom: 1px #767676 solid"></a>
         <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
         <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
         <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
         <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+        <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
         <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
-        <div style="width: 190px; height: 52px; left: 1151px; top: 6px; position: absolute; background: #EFEFEF"></div>
         <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
       </div>
     </div>
@@ -164,25 +167,29 @@ function toggleDropdown() {
       </div>
     </div>
     <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
       <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
       <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
       <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
       <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
       <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+      <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
       <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
-      <div style="width: 190px; height: 52px; left: 1151px; top: 6px; position: absolute; background: #EFEFEF"></div>
       <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
     </div>
 
     <div th:if="${session.login_user != null && session.login_user.isAdmin != 0}">
       <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
         <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
         <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
         <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
         <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
         <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+        <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
         <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
-        <div style="width: 190px; height: 52px; left: 1151px; top: 6px; position: absolute; background: #EFEFEF"></div>
         <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
       </div>
     </div>
@@ -213,67 +220,500 @@ function toggleDropdown() {
       </div>
     </div>
     <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
       <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
       <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
       <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
       <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
       <a  href="/coding" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Coding</a>
+      <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
       <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
-      <div style="width: 190px; height: 52px; left: 1151px; top: 6px; position: absolute; background: #EFEFEF"></div>
       <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
     </div>
 
     <div th:if="${session.login_user != null && session.login_user.isAdmin != 0}">
       <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
         <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
         <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
         <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
         <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
         <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+        <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
         <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
-        <div style="width: 190px; height: 52px; left: 1151px; top: 6px; position: absolute; background: #EFEFEF"></div>
         <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
       </div>
     </div>
   </div>
 
-
-
   <!-- main body -->
   <div style="width: 100%; height: 100%; position: relative; background: white">
+    <div style="width: 100%; height: 100%; position: relative; background: white">
+      <!-- Submission Container -->
+      <div th:if="${session.login_user != null}" style="width: 800px;height: 885.34px;left: 102px;top: 249px;position: absolute;">
+        <!-- Dynamically Rendered Submissions -->
+        <div th:each="submission, stat : ${submissions.list}">
 
-    <!-- gradient -->
-    <div style="width: 1455px;height: 387px;left: -13px;top: 600px;position: absolute">
-      <div style="width: 1455px; height: 387px; left: 0px;  position: absolute; background: linear-gradient(226deg, #51CED1 0%, #FFA34F 100%)"></div>
-      <div style="width: 461px; height: 57px; left: 504px; top: 102px; position: absolute; text-align: center; color: black; font-size: 40px; font-family: Fira Code; font-weight: 700; line-height: 65px; word-wrap: break-word">Want to practice?</div>
-      <div style="width: 254px; height: 50px; left: 607px; top: 184px; position: absolute">
-        <div style="width: 120px; height: 49px; left: 0px; top: 0px; position: absolute">
-          <div style="width: 120px; height: 49px; left: 0px; top: 0px; position: absolute; background: black; border-radius: 9999px"></div>
-          <a href="/register" style="width: 100px; height: 35px; left: 10.37px; top: 7px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700;word-wrap: break-word;line-height: 35.38px; text-align: center; ">Sign up</a>
+          <a th:href="@{code(problem_id=${submission.problemId},user_id=${submission.userId}, cur_date=${submission.curDate})}" th:attr="style='width: 800px; height: 150px; left: 0px; top: ' + ${175.34 * stat.index + 56} + 'px; position: absolute;'">
+            <div style="width: 800px; height: 150px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border: 1px #D8D8D8 solid;"></div>
+            <div style="width: 100%; height: 65.20px; left: 38px; top: 21px; position: absolute;">
+              <span th:if="${submission.status==1}" style="color: #5dd265; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 30px; word-wrap: break-word;">Accepted</span>
+              <span th:if="${submission.status==0}" style="color: #ee8383; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 30px; word-wrap: break-word;">Wrong Answer</span><br/>
+              <span style="color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 46px; word-wrap: break-word;" th:text="'Time: '+${submission.curDate}"></span>
+              <br>
+              <div th:text="${submission.code}" id="limited-text" style="height: 20px; width:680px; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 20px; word-wrap: break-word; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;">
+              </div>
+
+              <script>
+        (function() {
+            var element = document.getElementById('limited-text');
+            var lineHeight = parseInt(window.getComputedStyle(element).lineHeight);
+            var maxHeight = parseInt(element.style.height);
+            var maxLines = Math.floor(maxHeight / lineHeight);
+
+            element.style.display = '-webkit-box';
+            element.style.webkitBoxOrient = 'vertical';
+            element.style.webkitLineClamp = maxLines;
+        })();
+    </script>
+
+            </div>
+          </a>
         </div>
-        <div style="width: 120px;height: 49px;left: 134px;/* top: 1px; */position: absolute;">
-          <div style="width: 116.43px;height: 46px;left: 0px;top: 0px;position: absolute;background: rgba(255, 255, 255, 0);border-radius: 9999px;border: 1.50px black solid;"></div>
-          <a href="/coding" style="width: 99.53px; height: 35px; left: 20.47px; top: 7px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word;line-height: 35.38px; text-align: center; ">Code</a>
-        </div>
-        <img src="/icon_terminal.svg" style="width: 15px; height: 16.13px; left: 158px; top: 17px; position: absolute;">
       </div>
-    </div>
 
-    <!-- content -->
-    <div style="height: 315px; left: 98px; top: 221px; position: absolute">
-      <div style="width: 1205px; height: 260px; left: 0px; top: 55px; position: absolute; color: black; font-size: 16px; font-family: Fira Code; font-weight: 400; line-height: 30px; word-wrap: break-word">This Website is created by Cici, aiming to facilitate learning.</div>
-      <div style="width: 1205px; height: 30px; left: 0px; top: 0px; position: absolute; color: black; font-size: 24px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word">About the website</div>
-    </div>
+      <!-- nav bar-->
+      <div style="width: 1205px; height: 30px; left: 98px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:text="${problemInfo.title}"></div>
+      <div style="width: 504px; height: 39px; left: 89px; top: 262px; position: absolute">
+        <a style="width: 123px; left: 0px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/problems?id=' + ${problemInfo.problemId}}">Description</a>
+        <a style="width: 79px; left: 120px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/user/submit?id=' + ${problemInfo.problemId}}">Code</a>
+        <a style="width: 141px; left: 180px; top: 0px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/user/submissions?id=' + ${problemInfo.problemId}}">Submission</a>
+        <a style="width: 141px; left: 290px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/problems/discussions?id=' + ${problemInfo.problemId}}">Discussion</a>
+        <div style="width: 91px;height: 0px;left: 203px;top: 39px;position: absolute;border: 2px black solid"></div>
+      </div>
 
-    <div style="height: 315px; left: 98px; top: 353px; position: absolute">
-      <div style="width: 1205px; height: 260px; left: 0px; top: 55px; position: absolute; color: black; font-size: 16px; font-family: Fira Code; font-weight: 400; line-height: 30px; word-wrap: break-word">Hi, I’m Cici, a passionate programmer.</div>
-      <div style="width: 1205px; height: 30px; left: 0px; top: 0px; position: absolute; color: black; font-size: 24px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word">About the author</div>
-    </div>
 
+    </div>
+  </div>
+
+  <!-- Discussions Header -->
+  <div style="width: 166px; height: 56px; left: 940px; top: 178px; position: absolute; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 700; line-height: 66px; word-wrap: break-word;">
+    Discussions
+  </div>
+
+  <!-- Dynamically Rendered Discussions -->
+  <div th:each="discussion, stat : ${discussions.list}">
+    <div th:attr="style='width: 400px; height: 108.34px; left: 940px; top: ' + ${228 + (108.34 * stat.index)} + 'px; position: absolute;'">
+      <div style="width: 400px; height: 108.34px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border: 1px #D8D8D8 solid;"></div>
+      <div style="width: 353px; left: 38px; top: 60px; position: absolute; color: black; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 26px; word-wrap: break-word;" th:text="${discussion.content}"></div>
+      <div style="width: 112px; height: 25px; left: 38px; top: 22px; position: absolute;">
+        <div style="width: 78px; left: 34px; top: 0px; position: absolute; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 25px; word-wrap: break-word;" th:text="${discussion.nickName}"></div>
+        <div th:style="'width: 24px; height: 24px; left: 0px; top: 0px; position: absolute; background: url(' + ${discussion.image} + ') no-repeat center center/cover; border-radius: 20px;'"></div>                        </div>
+    </div>
   </div>
 
 
 </div>
+
+<script>
+   function showWaiting(){
+        var node=document.createElement("div");  //创建一个div元素节点，作为整个背景的容器
+        var nodeClass=document.createAttribute("class"); //创建class元素属性
+        var nodeStyle = document.createAttribute("style"); //创建style元素属性
+        var nodeName = document.createAttribute("name"); //创建name元素属性
+        nodeName.value = "divWaiting"; //给元素节点命名
+        nodeClass.value = "div-waiting"; //元素属性赋值
+        nodeStyle.value = "height:"+window.innerHeight + "px; width:"+window.innerWidth+"px;";
+        node.setAttributeNode(nodeClass); //设置元素节点的属性及值
+        node.setAttributeNode(nodeStyle);
+        node.setAttributeNode(nodeName);
+        var iconNode = document.createElement("div");  //创建一个div元素节点，作为旋转图标的容器
+        var iconClass = document.createAttribute("class");
+        iconClass.value = "icon-waiting";
+        //iconClass.value = "fa fa-spinner fa-pulse icon-position";
+        iconNode.setAttributeNode(iconClass);
+
+        node.appendChild(iconNode);  //将图标节点放到整个背景的元素节点
+        document.body.appendChild(node); //将整个背景div插入到body中
+    }
+
+
+function check(file) {
+    var lang = document.getElementById("lang");
+    if (file.value.match(/.asm$/)) lang.value = "Assembly"
+    if (file.value.match(/.cpp$/)) lang.value = "C++"
+    if (file.value.match(/.hs$/)) lang.value = "Haskell"
+    if (file.value.match(/.java$/)) lang.value = "Java"
+    if (file.value.match(/.zip$/)) lang.value = "Make"
+    if (file.value.match(/.js$/)) lang.value = "Node.js"
+    if (file.value.match(/.pas$/)) lang.value = "Pascal"
+    if (file.value.match(/.py$/)) lang.value = "Python2"
+    if (file.value.match(/.py$/)) lang.value = "Python3"
+    if (file.value.match(/.rb$/)) lang.value = "Ruby"
+    if (file.value.match(/.rs$/)) lang.value = "Rust"
+    if (file.value.match(/.scala$/)) lang.value = "Scala"
+    if (file.value.match(/.cc$/)) lang.value = "C++";
+    if (file.value.match(/.java$/)) {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            if (reader.result.match(/^package\s/m)) {
+                alert("Warning: don't use 'package' in your code");
+            }
+        };
+        reader.readAsBinaryString(file.files[0]);
+    }
+    if (file.value.match(/.py$/)) {
+        lang.value = "Python2";
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            if (!reader.result.match(/python2|raw_input|print\s+[^(]/)) {
+                lang.value = "Python3";
+                checkSelects();
+            }
+        };
+        reader.readAsBinaryString(file.files[0]);
+     }
+     checkSelects();
+}
+var type = [];
+type[1068] = 0;
+type[1083] = 0;
+type[1069] = 0;
+type[1094] = 0;
+type[1070] = 0;
+type[1071] = 0;
+type[1072] = 0;
+type[1092] = 0;
+type[1617] = 0;
+type[1618] = 0;
+type[1754] = 0;
+type[1755] = 0;
+type[2205] = 0;
+type[2165] = 0;
+type[1622] = 0;
+type[1623] = 0;
+type[1624] = 0;
+type[2431] = 0;
+type[1625] = 0;
+type[1621] = 0;
+type[1084] = 0;
+type[1090] = 0;
+type[1091] = 0;
+type[1619] = 0;
+type[1629] = 0;
+type[1640] = 0;
+type[1643] = 0;
+type[1074] = 0;
+type[2183] = 0;
+type[2216] = 0;
+type[2217] = 0;
+type[1141] = 0;
+type[1073] = 0;
+type[1163] = 0;
+type[2162] = 0;
+type[2163] = 0;
+type[2168] = 0;
+type[2169] = 0;
+type[1164] = 0;
+type[1620] = 0;
+type[1630] = 0;
+type[1631] = 0;
+type[1641] = 0;
+type[1642] = 0;
+type[1645] = 0;
+type[1660] = 0;
+type[1661] = 0;
+type[1662] = 0;
+type[2428] = 0;
+type[1085] = 0;
+type[1076] = 0;
+type[1077] = 0;
+type[1632] = 0;
+type[1644] = 0;
+type[1633] = 0;
+type[1634] = 0;
+type[1635] = 0;
+type[1636] = 0;
+type[1637] = 0;
+type[1638] = 0;
+type[1158] = 0;
+type[1746] = 0;
+type[2413] = 0;
+type[1639] = 0;
+type[1744] = 0;
+type[1745] = 0;
+type[1097] = 0;
+type[1093] = 0;
+type[1145] = 0;
+type[1140] = 0;
+type[1653] = 0;
+type[2181] = 0;
+type[2220] = 0;
+type[1192] = 0;
+type[1193] = 0;
+type[1666] = 0;
+type[1667] = 0;
+type[1668] = 0;
+type[1669] = 0;
+type[1194] = 0;
+type[1671] = 0;
+type[1672] = 0;
+type[1673] = 0;
+type[1195] = 0;
+type[1197] = 0;
+type[1196] = 0;
+type[1678] = 0;
+type[1679] = 0;
+type[1680] = 0;
+type[1681] = 0;
+type[1202] = 0;
+type[1750] = 0;
+type[1160] = 0;
+type[1751] = 0;
+type[1675] = 0;
+type[1676] = 0;
+type[1682] = 0;
+type[1683] = 0;
+type[1684] = 0;
+type[1686] = 0;
+type[1691] = 0;
+type[1692] = 0;
+type[1693] = 0;
+type[1690] = 0;
+type[1689] = 0;
+type[1694] = 0;
+type[1695] = 0;
+type[1696] = 0;
+type[1711] = 0;
+type[1646] = 0;
+type[1647] = 0;
+type[1648] = 0;
+type[1649] = 0;
+type[1650] = 0;
+type[1651] = 0;
+type[1652] = 0;
+type[1143] = 0;
+type[1749] = 0;
+type[1144] = 0;
+type[2166] = 0;
+type[2206] = 0;
+type[1190] = 0;
+type[1734] = 0;
+type[2416] = 0;
+type[1739] = 0;
+type[1735] = 0;
+type[1736] = 0;
+type[1737] = 0;
+type[1674] = 0;
+type[1130] = 0;
+type[1131] = 0;
+type[1132] = 0;
+type[1133] = 0;
+type[1687] = 0;
+type[1688] = 0;
+type[1135] = 0;
+type[1136] = 0;
+type[1137] = 0;
+type[1138] = 0;
+type[2134] = 0;
+type[1139] = 0;
+type[2079] = 0;
+type[2080] = 0;
+type[2081] = 0;
+type[2164] = 0;
+type[1095] = 0;
+type[1712] = 0;
+type[1713] = 0;
+type[1081] = 0;
+type[1082] = 0;
+type[2182] = 0;
+type[2185] = 0;
+type[2417] = 0;
+type[1079] = 0;
+type[1715] = 0;
+type[1716] = 0;
+type[1717] = 0;
+type[2064] = 0;
+type[2187] = 0;
+type[2209] = 0;
+type[2210] = 0;
+type[1722] = 0;
+type[1096] = 0;
+type[1723] = 0;
+type[1724] = 0;
+type[1725] = 0;
+type[1726] = 0;
+type[1727] = 0;
+type[1728] = 0;
+type[1729] = 0;
+type[1730] = 0;
+type[1098] = 0;
+type[1099] = 0;
+type[2207] = 0;
+type[2208] = 0;
+type[1731] = 0;
+type[1753] = 0;
+type[1732] = 0;
+type[1733] = 0;
+type[1110] = 0;
+type[1111] = 0;
+type[1112] = 0;
+type[2420] = 0;
+type[2102] = 0;
+type[2103] = 0;
+type[2104] = 0;
+type[2105] = 0;
+type[2106] = 0;
+type[2107] = 0;
+type[2108] = 0;
+type[2109] = 0;
+type[2110] = 0;
+type[2189] = 0;
+type[2190] = 0;
+type[2191] = 0;
+type[2192] = 0;
+type[2193] = 0;
+type[2194] = 0;
+type[2195] = 0;
+type[1628] = 0;
+type[2136] = 0;
+type[2137] = 0;
+type[2138] = 0;
+type[2143] = 0;
+type[2072] = 0;
+type[2073] = 0;
+type[2074] = 0;
+type[2076] = 0;
+type[2077] = 0;
+type[2078] = 0;
+type[2084] = 0;
+type[2085] = 0;
+type[2086] = 0;
+type[2087] = 0;
+type[2088] = 0;
+type[2111] = 0;
+type[2112] = 0;
+type[2113] = 0;
+type[2101] = 0;
+type[2133] = 0;
+type[2121] = 0;
+type[2129] = 0;
+type[2130] = 0;
+type[1087] = 0;
+type[1146] = 0;
+type[1670] = 0;
+type[1134] = 0;
+type[1756] = 0;
+type[2177] = 0;
+type[2179] = 0;
+type[2422] = 0;
+type[1142] = 0;
+type[2186] = 0;
+type[2229] = 0;
+type[1655] = 0;
+type[1664] = 0;
+type[1697] = 0;
+type[1702] = 0;
+type[1704] = 0;
+type[1707] = 0;
+type[1740] = 0;
+type[2214] = 0;
+type[2215] = 0;
+type[1743] = 0;
+type[2425] = 0;
+type[1747] = 0;
+type[1748] = 0;
+type[1149] = 0;
+type[1188] = 0;
+type[2419] = 0;
+type[1086] = 0;
+type[1113] = 0;
+type[2427] = 0;
+type[1147] = 0;
+type[1162] = 0;
+type[1191] = 0;
+type[2414] = 0;
+type[2132] = 0;
+type[1189] = 0;
+type[1654] = 0;
+type[1698] = 0;
+type[2430] = 0;
+type[1700] = 0;
+type[2228] = 0;
+type[1703] = 0;
+type[1706] = 0;
+type[1709] = 0;
+type[1742] = 0;
+type[2426] = 0;
+type[1757] = 0;
+type[2174] = 0;
+type[2180] = 0;
+type[2176] = 0;
+type[2432] = 0;
+type[2131] = 0;
+type[1080] = 0;
+type[1078] = 0;
+type[2115] = 0;
+type[2075] = 0;
+type[2421] = 0;
+type[1159] = 0;
+type[1677] = 0;
+type[1203] = 0;
+type[2184] = 0;
+type[1157] = 0;
+type[1148] = 0;
+type[2423] = 0;
+type[1161] = 0;
+type[1665] = 0;
+type[1699] = 0;
+type[2402] = 0;
+type[1701] = 0;
+type[1705] = 0;
+type[1741] = 0;
+type[2429] = 0;
+type[1752] = 0;
+type[1075] = 0;
+type[2415] = 0;
+type[1685] = 0;
+type[2418] = 0;
+var options = {"C++":["C++11","C++17","C++20"],"Python2":["CPython2","PyPy2"],"Python3":["CPython3","PyPy3"]}
+var defaults = {"C++":"C++11"}
+
+var optionsPopulated = null;
+function checkSelects() {
+    var option = document.getElementById("option");
+    var task = document.getElementById("task");
+    var lang = document.getElementById("lang");
+    if (task) lang.disabled = type[task.value] == 1;
+    if (!lang.disabled && lang.value in options) {
+        if (optionsPopulated != lang.value) {
+            option.innerHTML = null;
+            var list = options[lang.value];
+            for (var i = 0; i < list.length; i++) {
+                var o = document.createElement("option");
+                o.text = o.value = list[i];
+                option.add(o);
+            }
+            option.selectedIndex = 0;
+            if (defaults[lang.value]) option.value = defaults[lang.value];
+            optionsPopulated = lang.value;
+        }
+        optionInput.style.removeProperty('display');
+        option.disabled = false;
+    } else {
+        optionInput.style.display = "none";
+        option.disabled = true;
+    }
+}
+
+window.addEventListener("load", function() {
+    var task = document.getElementById("task");
+    if (task) task.addEventListener("change", checkSelects);
+    document.getElementById("lang").addEventListener("change", checkSelects);
+}, false);
+</script>
 
 
 <div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>

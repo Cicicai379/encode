@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"><head><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style>
+
+
+        <head>
+                <title>Problem Description</title>
+                <style data-styled="active" data-styled-version="5.3.8">
+     a:link {
+      text-decoration: none;
+    }
+    a:visited {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    a:active {
+      text-decoration: none;
+    }
+    @font-face {
+      font-family: 'Fira Code';
+      font-weight: 700;
+      src: url('FiraCode-Bold.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Fira Code';
+      font-weight: 600;
+      src: url('FiraCode-SemiBold.ttf') format('truetype');
+    }
+     @font-face {
+      font-family: 'Fira Code';
+      font-weight: 400;
+      src: url('FiraCode-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Fira Code';
+      font-weight: 300;
+      src: url('FiraCode-Light.ttf') format('truetype');
+    }
+    </style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style>
+                <script>
+function toggleDropdown() {
+    var dropdown = document.getElementById("dropdown");
+    if (dropdown.style.display === "none") {
+        dropdown.style.display = "block";
+    } else {
+        dropdown.style.display = "none";
+    }
+}
+</script>
+                <script>
+(function() {
+  var ws = new WebSocket('ws://' + window.location.host +
+             '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+             'referrer=' + encodeURIComponent(window.location.pathname));
+  ws.onmessage = function (msg) {
+      if (msg.data === 'reload') {
+          window.location.reload();
+      }
+      if (msg.data.startsWith('update-css ')) {
+          var messageId = msg.data.substring(11);
+          var links = document.getElementsByTagName('link');
+          for (var i = 0; i < links.length; i++) {
+              var link = links[i];
+              if (link.rel !== 'stylesheet') continue;
+              var clonedLink = link.cloneNode(true);
+              var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+              if (newHref !== link.href) {
+                clonedLink.href = newHref;
+              }
+              else {
+                var indexOfQuest = newHref.indexOf('?');
+                if (indexOfQuest >= 0) {
+                  // to support ?foo#hash
+                  clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                    newHref.substring(indexOfQuest + 1);
+                }
+                else {
+                  clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                }
+              }
+              link.replaceWith(clonedLink);
+          }
+      }
+  };
+})();
+</script>
+        </head>
+
+<body data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="">
+
+<div style="width: 100%; height: 100%; background: white">
+
+        <!-- nav bar and footer -->
+        <div style="width: 100%; height: 75px; left: 0px; top: 1094px; position: absolute">
+                <div style="width: 1442px; height: 75px; left: 0px; top: 0px; position: absolute; background: #202322"></div>
+                <a href="/" style="width: 78.11px; height: 24px; left: 1258.75px; top: 25px; position: absolute; text-align: center; color: white; font-size: 15px; font-family: Fira Code; font-weight: 700; line-height: 24px; word-wrap: break-word">Encode</a>
+                <a href="/help" style="width: 34.05px; left: 140.19px; top: 25px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word">Help</a>
+                <a href="/terms" style="width: 152.21px; left: 203.28px; top: 25px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word">Terms &amp; Conditions</a>
+        </div>
+        <div th:if="${session.login_user == null}">
+                <div style="width: 1242px; height: 64px; left: 98px; top: 28px; position: absolute">
+                        <form class="d-flex" action="/" method="post">
+                                <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
+                                        <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
+                                        <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                                <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
+                        </form>
+                        <div style="width: 214px; height: 42.22px; left: 1028px; top: 2px; position: absolute">
+                                <a href="/register" style="width: 101.33px; height: 41.38px; position: absolute; left: 0px; top: 0px; background: black; border-radius: 9999px; border: none; color: white; font-size: 12px; font-family: 'Fira Code'; font-weight: 700; line-height: 41.38px; text-align: center; cursor: pointer; padding-top: 0; padding-bottom: 0;">
+                                        Sign up
+                                </a>
+                                <a href="/login" style="line-height: 38.3px;width: 100.85px;height: 38.5px;position: absolute;left: 113.15px;top: 0px;background: rgba(255, 255, 255, 0);border-radius: 9999px;border: 1.5px solid black;color: black;font-size: 12px;font-family: 'Fira Code';font-weight: 700;text-align: center;cursor: pointer;padding-top: 0;padding-bottom: 0;">
+                                        Login
+                                </a>
+                        </div>
+                </div>
+                <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+                        <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                        <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
+                        <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
+                        <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
+                        <a  href="/coding" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Coding</a>
+                        <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
+                        <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
+                        <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
+                </div>
+                <div th:if="${session.login_user != null && session.login_user.isAdmin != 0}">
+                        <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
+                                <a href="/" style="width: 1440px; height: 52.13px; left: 0px; top: 4.92px; position: absolute; background: white; border-top: 1px #767676 solid; border-bottom: 1px #767676 solid"></a>
+                                <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
+                                <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
+                                <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
+                                <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+                                <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
+                                <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
+                                <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
+                        </div>
+                </div>
+        </div>
+        <div th:if="${session.login_user != null  && session.login_user.isAdmin != 0}">
+                <div style="width: 1242px; height: 64px; left: 98px; top: 28px; position: absolute">
+                        <form class="d-flex" action="/" method="post">
+                                <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
+                                        <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
+                                        <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                                <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
+                        </form>
+                        <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
+                        <div style="width: 126px; height: 36px; left: 1116px; top: 5px; position: absolute">
+                                <div style="position: absolute; top: 8px; left: 48px; display: flex; align-items: center;">
+                                        <img style="width: 36px; height: 36px; background: #676767; border-radius: 20px; position: absolute; left: -48px;" th:src="${session.login_user.image}" alt="User Image">
+                                        <div style="display: flex; align-items: center; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 700; line-height: 25px; color: black;">
+                                                <span style="white-space: nowrap; margin-right: 5px;" th:text="${session.login_user.nickName}">UserNickname</span>
+                                                <img style="width: 24px; height: 24px; cursor: pointer;" src="/arrow_drop_down.svg" onclick="toggleDropdown()" alt="Dropdown Arrow">
+                                        </div>
+                                </div>
+                                <div style=" top: 50px;width: 100%;height: 100%;position: absolute;top: 50; z-index: 1000; left:0px; display:none" id="dropdown" >
+                                        <div style="width: 150px; height: 104px; left: 0px; top: 0px; position: absolute; background: white; border: 1px #cacaca solid"></div>
+                                        <div style="width: 150px; height: 54px; left: 0px; top: 0px; position: absolute; background: white; border: 1px #cacaca solid"></div>
+                                        <a href="/user/setting" style="width: 150px; height: 29.51px;  top: 13px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word">Settings</a>
+                                        <a href="/logout" style="width: 150px; height: 29.51px;  top: 64px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word">Logout</a>
+                                </div>
+                        </div>
+                </div>
+                <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
+                        <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                        <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
+                        <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
+                        <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
+                        <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+                        <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
+                        <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
+                        <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
+                </div>
+
+                <div th:if="${session.login_user != null && session.login_user.isAdmin != 0}">
+                        <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
+                                <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                                <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
+                                <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
+                                <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
+                                <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+                                <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
+                                <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
+                                <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
+                        </div>
+                </div>
+        </div>
+        <div th:if="${session.login_user != null  && session.login_user.isAdmin != 1}">
+                <div style="width: 1242px; height: 64px; left: 98px; top: 28px; position: absolute">
+                        <form class="d-flex" action="/" method="post">
+                                <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
+                                        <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
+                                        <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                                <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
+                        </form>
+                        <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
+                        <div style="width: 126px; height: 36px; left: 1116px; top: 5px; position: absolute">
+                                <div style="position: absolute; top: 8px; left: 48px; display: flex; align-items: center;">
+                                        <img style="width: 36px; height: 36px; background: #676767; border-radius: 20px; position: absolute; left: -48px;" th:src="${session.login_user.image}" alt="User Image">
+                                        <div style="display: flex; align-items: center; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 700; line-height: 25px; color: black;">
+                                                <span style="white-space: nowrap; margin-right: 5px;" th:text="${session.login_user.nickName}">UserNickname</span>
+                                                <img style="width: 24px; height: 24px; cursor: pointer;" src="/arrow_drop_down.svg" onclick="toggleDropdown()" alt="Dropdown Arrow">
+                                        </div>
+                                </div>
+                                <div style=" top: 50px;width: 100%;height: 100%;position: absolute;top: 50; z-index: 1000; left:0px; display:none" id="dropdown" >
+                                        <div style="width: 150px; height: 104px; left: 0px; top: 0px; position: absolute; background: white; border: 1px #cacaca solid"></div>
+                                        <div style="width: 150px; height: 54px; left: 0px; top: 0px; position: absolute; background: white; border: 1px #cacaca solid"></div>
+                                        <a href="/user/setting" style="width: 150px; height: 29.51px;  top: 13px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word">Settings</a>
+                                        <a href="/logout" style="width: 150px; height: 29.51px;  top: 64px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word">Logout</a>
+                                </div>
+                        </div>
+                </div>
+                <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
+                        <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                        <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
+                        <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
+                        <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
+                        <a  href="/coding" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Coding</a>
+                        <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
+                        <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
+                        <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
+                </div>
+
+                <div th:if="${session.login_user != null && session.login_user.isAdmin != 0}">
+                        <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
+
+                                <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                                <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
+                                <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
+                                <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
+                                <a  href="/admin/upload" style="width: 123px;height: 29.51px;left: 975px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Admin</a>
+                                <div style="width: 190px; height: 52px; left: 91px; top: 6px; position: absolute; background: #EFEFEF"></div>
+
+                                <a  href="/" style="width: 102px;height: 29.51px;left: 137px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Home</a>
+                                <a  href="/about" style="width: 111px; height: 29.51px; left: 1190px; top: 16.72px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 600; line-height: 30px; word-wrap: break-word">About</a>
+                        </div>
+                </div>
+        </div>
+
+        <!-- main body -->
+        <div style="width: 100%; height: 100%; position: relative; background: white">
+                <div style="width: 100%; height: 100%; position: relative; background: white">
+
+                        <!-- nav bar-->
+                        <div style="width: 504px; height: 39px; left: 89px; top: 262px; position: absolute">
+                                <a style="width: 123px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/problems?id=' + ${problemInfo.problemId}}">Description</a>
+                                <a style="width: 79px; left: 120px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/user/submit?id=' + ${problemInfo.problemId}}">Code</a>
+                                <a style="width: 141px; left: 180px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/user/submissions?id=' + ${problemInfo.problemId}}">Submission</a>
+                                <a style="width: 141px; left: 290px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/problems/discussions?id=' + ${problemInfo.problemId}}">Discussion</a>
+                                <div style="width: 106px; height: 0px; left: 8px; top: 39px; position: absolute; border: 2px black solid"></div>
+                        </div>
+
+
+                        <!-- description-->
+                        <div style="width: 1205px; height: 30px; left: 98px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:text="${problemInfo.title}"></div>
+                        <div style="width: 682px; height: 283px; left: 97px; top: 320px; position: absolute; color: #676767; font-size: 16px; font-family: Fira Code; font-weight: 400; line-height: 26px;white-space: pre-line;" th:text="${problemInfo.problem}"></div>
+
+                </div>
+        </div>
+
+        <!-- Discussions Header -->
+        <div style="width: 166px; height: 56px; left: 940px; top: 178px; position: absolute; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 700; line-height: 66px; word-wrap: break-word;">
+                Discussions
+        </div>
+
+        <!-- Dynamically Rendered Discussions -->
+        <div th:each="discussion, stat : ${discussions.list}">
+                <div th:attr="style='width: 400px; height: 108.34px; left: 940px; top: ' + ${228 + (108.34 * stat.index)} + 'px; position: absolute;'">
+                        <div style="width: 400px; height: 108.34px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border: 1px #D8D8D8 solid;"></div>
+                        <div style="width: 353px; left: 38px; top: 60px; position: absolute; color: black; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 26px; word-wrap: break-word;" th:text="${discussion.content}"></div>
+                        <div style="width: 112px; height: 25px; left: 38px; top: 22px; position: absolute;">
+                                <div style="width: 78px; left: 34px; top: 0px; position: absolute; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 25px; word-wrap: break-word;" th:text="${discussion.nickName}"></div>
+                                <div th:style="'width: 24px; height: 24px; left: 0px; top: 0px; position: absolute; background: url(' + ${discussion.image} + ') no-repeat center center/cover; border-radius: 20px;'"></div>
+                        </div>
+                </div>
+        </div>
+        <!-- Submission Container -->
+        <div th:if="${session.login_user != null}" style="width: 400px; height: 485.34px; left: 940px; top: 565px; position: absolute;">
+                <!-- Submission Header -->
+                <div style="width: 166px; height: 56px; position: absolute; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 700; line-height: 66px; word-wrap: break-word;">
+                        Submissions
+                </div>
+
+                <!-- Dynamically Rendered Submissions -->
+                <div th:each="submission, stat : ${submissions.list}">
+                        <div th:attr="style='width: 400px; height: 108.34px; left: 0px; top: ' + ${125.34 * stat.index + 56} + 'px; position: absolute;'">
+                                <div style="width: 400px; height: 108.34px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border: 1px #D8D8D8 solid;"></div>
+                                <div style="width: 100%; height: 65.20px; left: 38px; top: 21px; position: absolute;">
+                                        <span th:if="${submission.status==1}" style="color: #5dd265; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 30px; word-wrap: break-word;">Accepted</span>
+                                        <span th:if="${submission.status==0}" style="color: #ee8383; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 30px; word-wrap: break-word;">Wrong Answer</span><br/>
+
+                                        <span style="color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 46px; word-wrap: break-word;" th:text="'Time: '+${submission.curDate}"></span>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+
+
+<div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
+
+<div></div><div id="compose-ai-general-snackbar-root"></div><div id="Chat-Plugin-Root" class="compose-root-component"></div></body></html>

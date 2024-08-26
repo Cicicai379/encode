@@ -4,7 +4,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xin.aoc.form.ProblemForm;
 import com.xin.aoc.form.UserForm;
+import com.xin.aoc.mapper.DiscussionMapper;
 import com.xin.aoc.mapper.SubmissionMapper;
+import com.xin.aoc.model.Discussion;
 import com.xin.aoc.model.Problem;
 import com.xin.aoc.model.Submission;
 import com.xin.aoc.model.UserInfo;
@@ -51,18 +53,34 @@ public class ProblemController {
     private SubmissionService submissionService;
     @Autowired
     private SubmissionMapper submissionMapper;
-
+    @Autowired
+    DiscussionMapper discussionMapper;
 
     @GetMapping(value="/problems")
-    public String add(@RequestParam(required=false,value="id") int id, Model model){
+    public String add(@RequestParam(required=false,value="id") int id, Model model, HttpServletRequest request){
         Problem problem = problemService.getProblem(id);
-
+        // handle problem description column display
         if(problem==null){
             logger.info("!!contest");
             return "redirect:/";
         }
         model.addAttribute("problemInfo", problem);
-        return "problem/problems";
+
+        // handle submission column display
+        UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
+        if(user!=null){
+            List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),id);
+            submissions = submissions.subList(0, Math.min(3, submissions.size()));
+            logger.info(submissions.toString()+"!!!!");
+            PageInfo<Submission> subInfo = new PageInfo<Submission>(submissions);
+            model.addAttribute("submissions", subInfo);
+        }
+        // handle discussion column display
+        List<Discussion> discussions = discussionMapper.getDiscussionById(id);
+        discussions = discussions.subList(0, Math.min(3, discussions.size()));
+        PageInfo<Discussion> disInfo = new PageInfo<Discussion>(discussions);
+        model.addAttribute("discussions", disInfo);
+        return "problem/problems2";
     }
 
 
@@ -83,15 +101,30 @@ public class ProblemController {
         model.addAttribute("problemInfo", problem);
         model.addAttribute("result", result);
         model.addAttribute("msg", msg);
-        return "user/submit";
+
+        // handle submission column display
+        if(user!=null){
+            List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),problemId);
+            submissions = submissions.subList(0, Math.min(3, submissions.size()));
+            logger.info(submissions.toString()+"!!!!");
+            PageInfo<Submission> subInfo = new PageInfo<Submission>(submissions);
+            model.addAttribute("submissions", subInfo);
+        }
+        // handle discussion column display
+        List<Discussion> discussions = discussionMapper.getDiscussionById(problemId);
+        discussions = discussions.subList(0, Math.min(3, discussions.size()));
+        PageInfo<Discussion> disInfo = new PageInfo<Discussion>(discussions);
+        model.addAttribute("discussions", disInfo);
+        return "user/submit2";
     }
 
     @PostMapping(value="/user/submit")
     public String submit(@RequestParam(value="file") MultipartFile file,
                          @RequestParam(required=false,value="code") String word_code,
-                         @RequestParam(required=false,value="id") int id,
+                         @RequestParam(required=false,value="id") Integer id,
                          Model model, HttpServletRequest request,
                          HttpServletResponse response){
+
 
 
         Problem problem = problemService.getProblem(id);
@@ -106,6 +139,9 @@ public class ProblemController {
 
         if(!Objects.equals(word_code, "")){
             code=word_code;
+
+            logger.info("Code submitted: "+code);
+
         }else {
             if (!file.isEmpty()) {
                 try {
@@ -136,10 +172,11 @@ public class ProblemController {
             msg="";
         }else{
             msg=output;
+            logger.info("Output: "+msg);
         }
 
-        logger.info("code: "+code);
-        logger.info("output "+output);
+//        logger.info("code: "+code);
+//        logger.info("output "+output);
 
         String time=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         int status=0;
@@ -156,8 +193,9 @@ public class ProblemController {
         model.addAttribute("msg",msg);
         model.addAttribute("result",result);
         model.addAttribute("lastSubmission",code);
+//        logger.info("msg:!!" + msg);
         submissionService.update(problem.getProblemId(),user.getUserId(), code, time, status, problem.getTitle());
-        return "user/submit";
+        return "redirect:/user/submit?id=" +id+"&msg="+msg+"&result="+result;
     }
 
 
@@ -165,25 +203,36 @@ public class ProblemController {
     public String search(@RequestParam(required = false, defaultValue = "1", value = "page")
                          Integer page,
                          @RequestParam(required = false,  value = "key") String key,
-                         @RequestParam(required = false,  value = "id") int problemId,
+                         @RequestParam(required = false,  value = "id") Integer problemId,
                          Model model, HttpServletRequest request) {
         Problem problem = problemService.getProblem(problemId);
         model.addAttribute("problemInfo", problem);
         if (page == null || page <= 0) page = 1;
-        int size = 8;
+        int size = 20;
         PageHelper.startPage(page, size);
         UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
 
-        List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),problemId);
-        logger.info(submissions.toString()+"!!!!");
-        PageInfo<Submission> pageInfo = new PageInfo<Submission>(submissions, size);
-        model.addAttribute("submissions", pageInfo);
+        // handle submission column display
+        if(user!=null){
+            List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(), problemId);
+            submissions = submissions.subList(0, Math.min(10000, submissions.size()));
+// logger.info(submissions.toString() + "!!!!");
+            PageInfo<Submission> subInfo = new PageInfo<>(submissions);
 
-        return "user/submissions";
+            logger.info("User " + user.getUserId() + "'s " + problemId + " has " + submissions.size() + " submission entries");
+            model.addAttribute("submissions", subInfo);
+        }
+        // handle discussion column display
+        List<Discussion> discussions = discussionMapper.getDiscussionById(problemId);
+        discussions = discussions.subList(0, Math.min(3, discussions.size()));
+        PageInfo<Discussion> disInfo = new PageInfo<Discussion>(discussions);
+        model.addAttribute("discussions", disInfo);
+
+        return "user/submissions2";
     }
     @RequestMapping(value = "/user/code")
     public String codes(
-                         @RequestParam(required = false,  value = "problem_id") int problemId,
+                         @RequestParam(required = false,  value = "problem_id") Integer problemId,
                          @RequestParam(required = false,  value = "user_id") int userId,
                          @RequestParam(required = false,  value = "cur_date") String curDate,
                          Model model, HttpServletRequest request) {
@@ -193,6 +242,6 @@ public class ProblemController {
         model.addAttribute("submission", submission);
         Problem problem = problemService.getProblem(problemId);
         model.addAttribute("problemInfo", problem);
-        return "user/code";
+        return "user/code2";
     }
 }

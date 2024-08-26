@@ -1,9 +1,10 @@
-<html lang="en"><head><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style>
+<!DOCTYPE html>
+<html lang="en"><head><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style>
 
 
-
-    <title>Code</title>
-    <style data-styled="active" data-styled-version="5.3.8">
+    <head>
+        <title>Upload Contests</title>
+        <style data-styled="active" data-styled-version="5.3.8">
      a:link {
       text-decoration: none;
     }
@@ -19,25 +20,25 @@
     @font-face {
       font-family: 'Fira Code';
       font-weight: 700;
-      src: url('FiraCode-Bold.ttf') format('truetype');
+      src: url('/FiraCode-Bold.ttf') format('truetype');
     }
     @font-face {
       font-family: 'Fira Code';
       font-weight: 600;
-      src: url('FiraCode-SemiBold.ttf') format('truetype');
+      src: url('/FiraCode-SemiBold.ttf') format('truetype');
     }
      @font-face {
       font-family: 'Fira Code';
       font-weight: 400;
-      src: url('FiraCode-Regular.ttf') format('truetype');
+      src: url('/FiraCode-Regular.ttf') format('truetype');
     }
     @font-face {
       font-family: 'Fira Code';
       font-weight: 300;
-      src: url('FiraCode-Light.ttf') format('truetype');
+      src: url('/FiraCode-Light.ttf') format('truetype');
     }
-    </style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style>
-    <script>
+    </style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style>
+        <script>
 function toggleDropdown() {
     var dropdown = document.getElementById("dropdown");
     if (dropdown.style.display === "none") {
@@ -47,7 +48,7 @@ function toggleDropdown() {
     }
 }
 </script>
-    <script>
+        <script>
 (function() {
   var ws = new WebSocket('ws://' + window.location.host +
              '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
@@ -85,8 +86,8 @@ function toggleDropdown() {
 })();
 </script>
 
-    <script src="https://cdn.staticfile.org/downloadjs/1.4.8/download.min.js"></script>
-    <script type="text/javascript">
+        <script src="https://cdn.staticfile.org/downloadjs/1.4.8/download.min.js"></script>
+        <script type="text/javascript">
     function showWaiting(){
         var node=document.createElement("div");  //创建一个div元素节点，作为整个背景的容器
         var nodeClass=document.createAttribute("class"); //创建class元素属性
@@ -117,65 +118,37 @@ function toggleDropdown() {
         }
     }
 </script>
-</head>
+        <script type="text/javascript" th:inline="javascript">
 
-<body data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="">
+  function doCheckUsername() {
+    var original = /*[[${username}]]*/ 'Unknown';
+    var load_url = "/check_title";
+    var title = $("#title").val();
+
+    $.post(load_url, {title: title}, function(data) {
+      if (data == "ok") {
+        $("#labUserName").hide();
+        $("#btnSubmit").removeAttr('disabled');
+      } else {
+        $("#labUserName").show();
+        $("#btnSubmit").attr('disabled', true);
+      }
+    });
+  }
+
+$( "#time" ).datepicker({
+    startDate: new Date()
+});
+
+</script>
+
+    </head>
+
+<body data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="" style="font-family: 'Fira Code', monospace;">
 
 <div style="width: 100%; height: 100%; background: white">
-
-
-
-
-    <!-- main body -->
-
-        <!-- gradient -->
-        <div style="width: 1455px;height: 387px;left: -13px;top: 1200px;position: absolute">
-            <div style="width: 1455px; height: 387px; left: 0px;  position: absolute; background: linear-gradient(226deg, #51CED1 0%, #FFA34F 100%)"></div>
-            <div style="width: 461px; height: 57px; left: 504px; top: 102px; position: absolute; text-align: center; color: black; font-size: 40px; font-family: Fira Code; font-weight: 700; line-height: 65px; word-wrap: break-word">Want to learn more?</div>
-            <div style="width: 254px; height: 50px; left: 607px; top: 184px; position: absolute">
-                <div style="width: 120px; height: 49px; left: 0px; top: 0px; position: absolute">
-                    <div style="width: 120px; height: 49px; left: 0px; top: 0px; position: absolute; background: black; border-radius: 9999px"></div>
-                    <a href="/register" style="width: 100px; height: 35px; left: 10.37px; top: 7px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700;word-wrap: break-word;line-height: 35.38px; text-align: center; ">Sign up</a>
-                </div>
-                <div style="width: 120px;height: 49px;left: 134px;/* top: 1px; */position: absolute;">
-                    <div style="width: 116.43px;height: 46px;left: 0px;top: 0px;position: absolute;background: rgba(255, 255, 255, 0);border-radius: 9999px;border: 1.50px black solid;"></div>
-                    <a href="/learn" style="width: 99.53px; height: 35px; left: 20.47px; top: 7px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word;line-height: 35.38px; text-align: center; ">Learn</a>
-                </div>
-                <img src="/icon_learn.svg" style="width: 15px; height: 16.13px; left: 158px; top: 17px; position: absolute;">
-            </div>
-        </div>
-
-        <!-- the boxes-->
-        <form action="/coding" method="post">
-
-            <div style="width: 1240px;height: 795px;left: 100px;top: 250px;position: absolute">
-                <button onclick="showWaiting()" type="submit" style="width: 101.33px; height: 41.38px; position: absolute; left: 0px; top: -60px; background: black; border-radius: 9999px; border: none; color: white; font-size: 12px; font-family: 'Fira Code'; font-weight: 700; line-height: 41.38px; text-align: center; cursor: pointer; padding-top: 0; padding-bottom: 0;">
-                    Submit</button>
-
-
-                <div style="width: 1240px; height: 639px; position: absolute; top: 156px; left: 0;">
-                    <div style="width: 1240px; height: 639px; background: rgba(0, 0, 0, 0.06); border-radius: 30px; position: absolute; top: 0; left: 0;"></div>
-                    <div style="width: 98%; height: 100%; position: absolute; top: 0; left: 28px;">
-                        <textarea name="code" id="code" placeholder="code here..." style="width: 100%; height: 100%; border: none; outline: none; background: none; color: black; font-size: 12px; font-family: 'Fira Code'; font-weight: 300; line-height: 25px; padding-top: 29px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; resize: none;"></textarea>
-                    </div>
-                </div>
-                <div style="width: 821px; height: 135px; position: absolute; top: 0; left: 0;">
-                    <div style="width: 821px; height: 135px; background: rgba(0, 0, 0, 0.06); border-radius: 30px; position: absolute; top: 0; left: 0;"></div>
-                    <div style="width: 98%; height: 17.61px; position: absolute; top: 29px; left: 28px;">
-                        <input value="" name="in_put" id="in_put" type="text" placeholder="input..." style="width: 100%; height: 100%; border: none; outline: none; background: none; color: black; font-size: 12px; font-family: 'Fira Code'; font-weight: 300; line-height: 25px;">
-                    </div>
-                </div>
-                <div style="width: 400px; height: 135px; position: absolute; top: 0px; left: 840px;">
-                    <div style="width: 400px; height: 135px; background: rgba(0, 0, 0, 0.06); border-radius: 30px; position: absolute; top: 0; left: 0;"></div>
-                    <div style="width: 330.49px; height: 100%; position: absolute; top: 29px; left: 27px;">
-                        <textarea name="output" id="output" placeholder="output..." style="width: 100%; height: 100%; border: none; outline: none; background: none; color: black; font-size: 12px; font-family: 'Fira Code'; font-weight: 300; line-height: 25px; padding-top: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; resize: none;"></textarea>
-                    </div>
-                </div>
-            </div>
-        </form>
-
     <!-- nav bar and footer -->
-    <div style="width: 100%; height: 75px; left: 0px; top: 1587px; position: absolute">
+    <div style="width: 1442px; height: 75px; left: 0px; top: 1100px; position: absolute">
         <div style="width: 1442px; height: 75px; left: 0px; top: 0px; position: absolute; background: #202322"></div>
         <a href="/" style="width: 78.11px; height: 24px; left: 1258.75px; top: 25px; position: absolute; text-align: center; color: white; font-size: 15px; font-family: Fira Code; font-weight: 700; line-height: 24px; word-wrap: break-word">Encode</a>
         <a href="/help" style="width: 34.05px; left: 140.19px; top: 25px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word">Help</a>
@@ -186,7 +159,7 @@ function toggleDropdown() {
             <form class="d-flex" action="/" method="post">
                 <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
                     <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
-                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
                 <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
             </form>
             <div style="width: 214px; height: 42.22px; left: 1028px; top: 2px; position: absolute">
@@ -200,7 +173,7 @@ function toggleDropdown() {
         </div>
         <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
             <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
-            <div style="width: 190px;height: 52px;left: 943px;top: 6px;position: absolute;background: #EFEFEF"></div>
+            <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
             <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
             <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
             <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -213,6 +186,7 @@ function toggleDropdown() {
             <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
                 <a href="/" style="width: 1440px; height: 52.13px; left: 0px; top: 4.92px; position: absolute; background: white; border-top: 1px #767676 solid; border-bottom: 1px #767676 solid"></a>
+                <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
                 <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
                 <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
                 <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -228,7 +202,7 @@ function toggleDropdown() {
             <form class="d-flex" action="/" method="post">
                 <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
                     <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
-                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
                 <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
             </form>
             <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
@@ -251,6 +225,7 @@ function toggleDropdown() {
         <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
             <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+            <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
             <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
             <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
             <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -264,6 +239,7 @@ function toggleDropdown() {
             <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
                 <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
                 <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
                 <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
                 <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -279,7 +255,7 @@ function toggleDropdown() {
             <form class="d-flex" action="/" method="post">
                 <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
                     <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
-                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
                 <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
             </form>
             <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
@@ -302,7 +278,7 @@ function toggleDropdown() {
         <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
             <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
-            <div style="width: 190px;height: 52px;left: 518px;top: 6px;position: absolute;background: #EFEFEF"></div>
+            <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
             <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
             <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
             <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -316,6 +292,7 @@ function toggleDropdown() {
             <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
                 <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
                 <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
                 <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
                 <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -327,14 +304,86 @@ function toggleDropdown() {
         </div>
     </div>
 
+    <form th:action="@{/admin/upload_contest}" th:object="${ContestForm}" method="post">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: 150px; background-color: none;">
+            <div style="position: relative; width: 100%; max-width: 1205px;">
+                <!-- Header -->
+                <div style="width: 820px; height: 35px; margin: 20px auto; font-weight: 700; font-size: 22px;">
+                    Upload a Contest
+                </div>
 
+                <!-- Contest Name -->
+                <div style="width: 820px; margin: 20px auto;">
+                    <div style="background: #F0F0F0; border-radius: 9999px;">
+                        <input th:field="*{title}" id="title"
+                               th:value="${title}" type="text" placeholder="Contest name" style="font-family: 'Fira Code'; width: 100%; height: 40px; border: none; background: transparent; padding: 6px 20px; color: black; font-size: 12px; font-weight: 300; box-sizing: border-box; border-radius: inherit;">
+                    </div>
+                    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="display: block; margin-top: 5px; font-size: 10px; font-family: 'Fira Code'; color: #FFA34F; font-weight: 500;">Error in Problem Name</span>
+                </div>
+
+                <!-- Contest Description -->
+                <div style="width: 820px; margin: 20px auto;">
+                    <div style="background: rgba(0, 0, 0, 0.06); border-radius: 30px;">
+                <textarea th:field="*{content}" id="problem"
+                          th:value="${content}" placeholder="Content" style="font-family: 'Fira Code'; width: 100%; height: 291px; border: none; background: transparent; padding: 20px; color: black; font-size: 12px; font-weight: 300; box-sizing: border-box; border-radius: inherit; resize: none;"></textarea>
+                    </div>
+                    <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="display: block; margin-top: 5px; font-size: 10px; font-family: 'Fira Code'; color: #FFA34F; font-weight: 500;">Error in Contest Description</span>
+                </div>
+
+                <!-- input -->
+                <div style="width: 820px; margin: 20px auto;">
+                    <div style="background: #F0F0F0; border-radius: 9999px;">
+                        <input th:field="*{duration}" id="duration"
+                               type="text" placeholder="Duration (h)" style="font-family: 'Fira Code'; width: 100%; height: 40px; border: none; background: transparent; padding: 6px 20px; color: black; font-size: 12px; font-weight: 300; box-sizing: border-box; border-radius: inherit;">
+                    </div>
+                    <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}" style="margin-left: 10px;display: block; margin-top: 5px; font-size: 10px; font-family: 'Fira Code'; color: #FFA34F; font-weight: 500;">Error in Duration</span>
+                </div>
+
+                <!-- Contest open Time -->
+                <div style="width: 820px; height: 40px; margin: 20px auto; background: #F0F0F0; border-radius: 9999px; position: relative;">
+                    <input th:field="*{start}" id="start"
+                           th:value="${start}" type="datetime-local" placeholder="Open time" style="font-family: 'Fira Code'; width: 100%; height: 100%; border: none; background: transparent; padding: 6px 20px; color: black; font-size: 12px; font-weight: 300; box-sizing: border-box; border-radius: inherit;">
+                    <span th:if="${#fields.hasErrors('start')}" th:errors="*{start}" style="margin-left: 10px;display: block; margin-top: 5px; font-size: 10px; font-family: 'Fira Code'; color: #FFA34F; font-weight: 500;">Error in Open Time</span>
+                    <script>
+            let today = new Date();
+            let future = new Date(today.setDate(today.getDate() +50)).toISOString().slice(0, 16);
+            today = new Date().toISOString().slice(0, 16);
+
+            document.getElementsByName("time")[0].min = today;
+            document.getElementsByName("time")[0].max = future;
+
+        </script>
+                </div>
+
+                <!-- Contest end Time -->
+                <div style="width: 820px; height: 40px; margin: 20px auto; background: #F0F0F0; border-radius: 9999px; position: relative;">
+                    <input th:field="*{stop}" id="stop"
+                           th:value="${stop}" type="datetime-local" placeholder="Open time" style="font-family: 'Fira Code'; width: 100%; height: 100%; border: none; background: transparent; padding: 6px 20px; color: black; font-size: 12px; font-weight: 300; box-sizing: border-box; border-radius: inherit;">
+                    <span th:if="${#fields.hasErrors('stop')}" th:errors="*{start}" style="margin-left: 10px;display: block; margin-top: 5px; font-size: 10px; font-family: 'Fira Code'; color: #FFA34F; font-weight: 500;">Error in Stop Time</span>
+                    <script>
+            let today = new Date();
+            let future = new Date(today.setDate(today.getDate() +50)).toISOString().slice(0, 16);
+            today = new Date().toISOString().slice(0, 16);
+
+            document.getElementsByName("time")[0].min = today;
+            document.getElementsByName("time")[0].max = future;
+
+        </script>
+                </div>
+
+
+                <!-- Upload Button -->
+                <div style="width: 820px; height: 40px; margin: 20px auto;">
+                    <button type="submit" id="submit" onsubmit="validations()" style="width: 820px; height: 42.22px; margin: 20px auto; background: black; border-radius: 9999px; color: white; text-align: center;">
+                        <div style="font-family: 'Fira Code'; width: 683.33px; height: 30.16px; font-size: 12px; font-weight: 700; line-height: 30px; word-wrap: break-word; margin: auto;">
+                            Upload
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
 </div>
-
-
-
-<div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
-
-<div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
-<div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
-
-<div></div><div id="compose-ai-general-snackbar-root"></div><div id="Chat-Plugin-Root" class="compose-root-component"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+</body>
+</html>

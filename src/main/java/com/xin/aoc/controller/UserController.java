@@ -78,11 +78,12 @@ public class UserController {
                 userInfo.setPassword("");
                 HttpSession session = request.getSession();
                 session.setAttribute("login_user", userInfo);
+
+                logger.info("Email:"+username+" Password: "+ password);
                 return "redirect:/";
             }
             request.setAttribute("msg", "Name or password incorrect");
         }
-//        request.setAttribute("msg", "invalid username or password");
         return "login2";
     }
 
@@ -123,6 +124,7 @@ public class UserController {
         userInfo.setNickName(user.getNickName());
         userInfo.setPassword(getPasswordMd5(user.getPassword()));
         if (userInfoService.addUserInfo(userInfo)) {
+            logger.info("Username:"+user.getUserName()+"Email:"+user.getEmail()+" Password: "+ user.getPassword());
             model.addAttribute("register_success", "ok");
         } else {
             model.addAttribute("msg", "add user failure.");
@@ -246,7 +248,7 @@ public class UserController {
 
         session.setAttribute("login_user", user);
         model.addAttribute("username", user.getUserName());
-        return "user/setting";
+        return "user/setting2";
     }
     public void uploadFile(MultipartFile file, UserInfo user){
         String UPLOADED_FOLDER = "./images/";
@@ -282,7 +284,7 @@ public class UserController {
                                    BindingResult rs,
                                    Model model) {
         if (rs.hasErrors()) {
-            return "user/setting";
+            return "user/setting2";
         }
 
         UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
@@ -308,16 +310,18 @@ public class UserController {
             userInfo.setUserName(newUser.getUserName());
             userInfo.setPassword(newUser.getPassword());
             session.setAttribute("login_user", newUser);
-            model.addAttribute("msg", "reset success");
+            model.addAttribute("msg", "Reset successful");
             discussionMapper.updateAll(newUser);
             learnMapper.updateAll(newUser);
             contestMapper.updateAll(newUser);
             recordMapper.updateAll(newUser);
 
+            logger.info("New Email: "+newUser.getEmail()+"New Username: "+newUser.getUserName()+"Password: " +
+                    ""+newUser.getPassword());
         } else {
-            model.addAttribute("msg", "reset failed");
+            model.addAttribute("msg", "Reset failed");
         }
 
-        return "user/setting";
+        return "user/setting2";
     }
 }

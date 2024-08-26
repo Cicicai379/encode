@@ -1,9 +1,10 @@
-<html lang="en"><head><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style>
+<!DOCTYPE html>
+<html lang="en"><head><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="css" data-s=""></style>
 
 
-
-    <title>Code</title>
-    <style data-styled="active" data-styled-version="5.3.8">
+    <head>
+        <title>Contest Problem Description</title>
+        <style data-styled="active" data-styled-version="5.3.8">
      a:link {
       text-decoration: none;
     }
@@ -36,8 +37,8 @@
       font-weight: 300;
       src: url('FiraCode-Light.ttf') format('truetype');
     }
-    </style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style>
-    <script>
+    </style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style><style data-styled="active" data-styled-version="5.3.8"></style>
+        <script>
 function toggleDropdown() {
     var dropdown = document.getElementById("dropdown");
     if (dropdown.style.display === "none") {
@@ -47,7 +48,7 @@ function toggleDropdown() {
     }
 }
 </script>
-    <script>
+        <script>
 (function() {
   var ws = new WebSocket('ws://' + window.location.host +
              '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
@@ -84,98 +85,14 @@ function toggleDropdown() {
   };
 })();
 </script>
-
-    <script src="https://cdn.staticfile.org/downloadjs/1.4.8/download.min.js"></script>
-    <script type="text/javascript">
-    function showWaiting(){
-        var node=document.createElement("div");  //创建一个div元素节点，作为整个背景的容器
-        var nodeClass=document.createAttribute("class"); //创建class元素属性
-        var nodeStyle = document.createAttribute("style"); //创建style元素属性
-        var nodeName = document.createAttribute("name"); //创建name元素属性
-        nodeName.value = "divWaiting"; //给元素节点命名
-        nodeClass.value = "div-waiting"; //元素属性赋值
-        nodeStyle.value = "height:"+window.innerHeight + "px; width:"+window.innerWidth+"px;";
-        node.setAttributeNode(nodeClass); //设置元素节点的属性及值
-        node.setAttributeNode(nodeStyle);
-        node.setAttributeNode(nodeName);
-        var iconNode = document.createElement("div");  //创建一个div元素节点，作为旋转图标的容器
-        var iconClass = document.createAttribute("class");
-        iconClass.value = "icon-waiting";
-        //iconClass.value = "fa fa-spinner fa-pulse icon-position";
-        iconNode.setAttributeNode(iconClass);
-
-        node.appendChild(iconNode);  //将图标节点放到整个背景的元素节点
-        document.body.appendChild(node); //将整个背景div插入到body中
-    }
-
-    function closeWaiting(){
-        var wait = document.getElementsByName("divWaiting"); //获取name为divWaiting的元素节点
-        console.log(wait);
-        //遍历所有的节点，将body中的所有等待旋转效果去掉
-        for(var i=wait.length - 1; i>=0; i--){
-            document.body.removeChild(wait[i]);
-        }
-    }
-</script>
-</head>
+    </head>
 
 <body data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="">
 
 <div style="width: 100%; height: 100%; background: white">
 
-
-
-
-    <!-- main body -->
-
-        <!-- gradient -->
-        <div style="width: 1455px;height: 387px;left: -13px;top: 1200px;position: absolute">
-            <div style="width: 1455px; height: 387px; left: 0px;  position: absolute; background: linear-gradient(226deg, #51CED1 0%, #FFA34F 100%)"></div>
-            <div style="width: 461px; height: 57px; left: 504px; top: 102px; position: absolute; text-align: center; color: black; font-size: 40px; font-family: Fira Code; font-weight: 700; line-height: 65px; word-wrap: break-word">Want to learn more?</div>
-            <div style="width: 254px; height: 50px; left: 607px; top: 184px; position: absolute">
-                <div style="width: 120px; height: 49px; left: 0px; top: 0px; position: absolute">
-                    <div style="width: 120px; height: 49px; left: 0px; top: 0px; position: absolute; background: black; border-radius: 9999px"></div>
-                    <a href="/register" style="width: 100px; height: 35px; left: 10.37px; top: 7px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700;word-wrap: break-word;line-height: 35.38px; text-align: center; ">Sign up</a>
-                </div>
-                <div style="width: 120px;height: 49px;left: 134px;/* top: 1px; */position: absolute;">
-                    <div style="width: 116.43px;height: 46px;left: 0px;top: 0px;position: absolute;background: rgba(255, 255, 255, 0);border-radius: 9999px;border: 1.50px black solid;"></div>
-                    <a href="/learn" style="width: 99.53px; height: 35px; left: 20.47px; top: 7px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word;line-height: 35.38px; text-align: center; ">Learn</a>
-                </div>
-                <img src="/icon_learn.svg" style="width: 15px; height: 16.13px; left: 158px; top: 17px; position: absolute;">
-            </div>
-        </div>
-
-        <!-- the boxes-->
-        <form action="/coding" method="post">
-
-            <div style="width: 1240px;height: 795px;left: 100px;top: 250px;position: absolute">
-                <button onclick="showWaiting()" type="submit" style="width: 101.33px; height: 41.38px; position: absolute; left: 0px; top: -60px; background: black; border-radius: 9999px; border: none; color: white; font-size: 12px; font-family: 'Fira Code'; font-weight: 700; line-height: 41.38px; text-align: center; cursor: pointer; padding-top: 0; padding-bottom: 0;">
-                    Submit</button>
-
-
-                <div style="width: 1240px; height: 639px; position: absolute; top: 156px; left: 0;">
-                    <div style="width: 1240px; height: 639px; background: rgba(0, 0, 0, 0.06); border-radius: 30px; position: absolute; top: 0; left: 0;"></div>
-                    <div style="width: 98%; height: 100%; position: absolute; top: 0; left: 28px;">
-                        <textarea name="code" id="code" placeholder="code here..." style="width: 100%; height: 100%; border: none; outline: none; background: none; color: black; font-size: 12px; font-family: 'Fira Code'; font-weight: 300; line-height: 25px; padding-top: 29px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; resize: none;"></textarea>
-                    </div>
-                </div>
-                <div style="width: 821px; height: 135px; position: absolute; top: 0; left: 0;">
-                    <div style="width: 821px; height: 135px; background: rgba(0, 0, 0, 0.06); border-radius: 30px; position: absolute; top: 0; left: 0;"></div>
-                    <div style="width: 98%; height: 17.61px; position: absolute; top: 29px; left: 28px;">
-                        <input value="" name="in_put" id="in_put" type="text" placeholder="input..." style="width: 100%; height: 100%; border: none; outline: none; background: none; color: black; font-size: 12px; font-family: 'Fira Code'; font-weight: 300; line-height: 25px;">
-                    </div>
-                </div>
-                <div style="width: 400px; height: 135px; position: absolute; top: 0px; left: 840px;">
-                    <div style="width: 400px; height: 135px; background: rgba(0, 0, 0, 0.06); border-radius: 30px; position: absolute; top: 0; left: 0;"></div>
-                    <div style="width: 330.49px; height: 100%; position: absolute; top: 29px; left: 27px;">
-                        <textarea name="output" id="output" placeholder="output..." style="width: 100%; height: 100%; border: none; outline: none; background: none; color: black; font-size: 12px; font-family: 'Fira Code'; font-weight: 300; line-height: 25px; padding-top: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; resize: none;"></textarea>
-                    </div>
-                </div>
-            </div>
-        </form>
-
     <!-- nav bar and footer -->
-    <div style="width: 100%; height: 75px; left: 0px; top: 1587px; position: absolute">
+    <div style="width: 100%; height: 75px; left: 0px; top: 1094px; position: absolute">
         <div style="width: 1442px; height: 75px; left: 0px; top: 0px; position: absolute; background: #202322"></div>
         <a href="/" style="width: 78.11px; height: 24px; left: 1258.75px; top: 25px; position: absolute; text-align: center; color: white; font-size: 15px; font-family: Fira Code; font-weight: 700; line-height: 24px; word-wrap: break-word">Encode</a>
         <a href="/help" style="width: 34.05px; left: 140.19px; top: 25px; position: absolute; text-align: center; color: white; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 25px; word-wrap: break-word">Help</a>
@@ -186,7 +103,7 @@ function toggleDropdown() {
             <form class="d-flex" action="/" method="post">
                 <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
                     <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
-                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
                 <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
             </form>
             <div style="width: 214px; height: 42.22px; left: 1028px; top: 2px; position: absolute">
@@ -200,7 +117,7 @@ function toggleDropdown() {
         </div>
         <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
             <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
-            <div style="width: 190px;height: 52px;left: 943px;top: 6px;position: absolute;background: #EFEFEF"></div>
+            <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
             <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
             <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
             <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -213,6 +130,7 @@ function toggleDropdown() {
             <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
                 <a href="/" style="width: 1440px; height: 52.13px; left: 0px; top: 4.92px; position: absolute; background: white; border-top: 1px #767676 solid; border-bottom: 1px #767676 solid"></a>
+                <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
                 <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
                 <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
                 <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -228,7 +146,7 @@ function toggleDropdown() {
             <form class="d-flex" action="/" method="post">
                 <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
                     <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
-                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
                 <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
             </form>
             <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
@@ -251,6 +169,7 @@ function toggleDropdown() {
         <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
             <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+            <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
             <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
             <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
             <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -264,6 +183,7 @@ function toggleDropdown() {
             <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
                 <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
                 <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
                 <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
                 <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -279,7 +199,7 @@ function toggleDropdown() {
             <form class="d-flex" action="/" method="post">
                 <div style="width: 570px; height: 42px; left: 323px; top: 2px; position: absolute; border-radius: 99999px; border: 1px solid #D8D8D8; display: flex; align-items: center; padding-left: 36px; padding-right:30px">
                     <img src="/search.png" alt="Search" style="width: 12px; height: 12px; margin-right: 12px;">
-                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
+                    <input type="text" placeholder="Search" style="/* flex-grow: 1; */border: none;height: 90;font-size: 14px;font-family: 'Fira Code';font-weight: 400;color: #9A9A9A;outline: none;">      </div>
                 <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
             </form>
             <img style="width: 183px;height: 50px;left: 0px;top: -3px;position: absolute;" src="/logo.png">
@@ -302,7 +222,7 @@ function toggleDropdown() {
         <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
             <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
-            <div style="width: 190px;height: 52px;left: 518px;top: 6px;position: absolute;background: #EFEFEF"></div>
+            <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
             <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
             <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
             <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -316,6 +236,7 @@ function toggleDropdown() {
             <div style="width: 1440px; height: 60px; left: 0px; top: 94px; position: absolute">
 
                 <a href="/" style="width: 1440px;height: 52.13px;left: 0px;top: 4.92px;position: absolute;background: white;border-top: 1px #cacaca solid;border-bottom: 1px #cacaca solid;"></a>
+                <div style="width: 190px;height: 52px;left: 310px;top: 6px;position: absolute;background: #EFEFEF"></div>
                 <a href="/learn" style="width: 67px;height: 29.51px;left: 578px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Learn</a>
                 <a  href="/contests" style="width: 104px;height: 29.51px;left: 352px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Contests</a>
                 <a  href="/leaderboard" style="width: 114px;height: 29.51px;left: 762px;top: 16.72px;position: absolute;text-align: center;color: black;font-size: 16px;font-family: Fira Code;font-weight: 600;line-height: 30px;word-wrap: break-word">Leaderboard</a>
@@ -327,14 +248,49 @@ function toggleDropdown() {
         </div>
     </div>
 
+    <!-- main body -->
+    <div style="width: 100%; height: 100%; position: relative; background: white">
+        <div style="width: 100%; height: 100%; position: relative; background: white">
 
+            <!-- nav bar-->
+            <div style="width: 504px; height: 39px; left: 89px; top: 262px; position: absolute">
+                <a style="width: 123px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word"  th:href="@{'/problems_contest?id='+${problemInfo.problemId}+'&contestId='+${contestId}}">Description</a>
+                <a style="width: 79px; left: 120px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word"  th:href="@{'/user/submit_contest?id='+${problemInfo.problemId}+'&contestId='+${contestId}}">Code</a>
+                <a style="width: 141px; left: 180px; top: 0px; position: absolute; text-align: center; color: #676767; font-size: 14px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:href="@{'/user/submission_contest?id='+${problemInfo.problemId}+'&contestId='+${contestId}}">Submission</a>
+                <div style="width: 106px; height: 0px; left: 8px; top: 39px; position: absolute; border: 2px black solid"></div>
+            </div>
+
+
+            <!-- description-->
+            <div style="width: 1205px; height: 30px; left: 98px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: Fira Code; font-weight: 700; line-height: 30px; word-wrap: break-word" th:text="${problemInfo.title}"></div>
+            <div style="width: 682px; height: 283px; left: 97px; top: 320px; position: absolute; color: #676767; font-size: 16px; font-family: Fira Code; font-weight: 400; line-height: 26px;white-space: pre-line;" th:text="${problemInfo.problem}"></div>
+
+        </div>
+    </div>
+
+    <!-- Submission Container -->
+    <div th:if="${session.login_user != null}" style="width: 400px; height: 485.34px; left: 940px; top: 178px; position: absolute;">
+        <!-- Submission Header -->
+        <div style="width: 166px; height: 56px; position: absolute; color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 700; line-height: 66px; word-wrap: break-word;">
+            Latest Submissions
+        </div>
+
+        <!-- Dynamically Rendered Submissions -->
+        <div th:each="submission, stat : ${submissions.list}">
+            <div th:attr="style='width: 400px; height: 108.34px; left: 0px; top: ' + ${125.34 * stat.index + 56} + 'px; position: absolute;'">
+                <div style="width: 400px; height: 108.34px; left: 0px; top: 0px; position: absolute; background: rgba(255, 255, 255, 0.10); border: 1px #D8D8D8 solid;"></div>
+                <div style="width: 100%; height: 65.20px; left: 38px; top: 21px; position: absolute;">
+                    <span th:if="${submission.status==1}" style="color: #5dd265; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 30px; word-wrap: break-word;">Accepted</span>
+                    <span th:if="${submission.status==0}" style="color: #ee8383; font-size: 16px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 30px; word-wrap: break-word;">Wrong Answer</span><br/>
+
+                    <span style="color: #676767; font-size: 14px; font-family: 'Fira Code', monospace; font-weight: 400; line-height: 46px; word-wrap: break-word;" th:text="'Time: '+${submission.curDate}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-
 <div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
 
-<div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
-<div></div><div id="Chat-Plugin-Root" class="compose-root-component"></div>
-
-<div></div><div id="compose-ai-general-snackbar-root"></div><div id="Chat-Plugin-Root" class="compose-root-component"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+<div></div><div id="compose-ai-general-snackbar-root"></div><div id="Chat-Plugin-Root" class="compose-root-component"></div></body></html>

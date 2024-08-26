@@ -28,30 +28,7 @@
 //
 //
 //    @RequestMapping(value = "/error")
-//    public String search(@RequestParam(required = false, defaultValue = "1", value = "page")
-//                         Integer page,
-//                         @RequestParam(required = false,  value = "key") String key,
-//                         Model model, HttpServletRequest request) {
-//        if (page == null || page <= 0) page = 1;
-//        int size = 8;
-//        PageHelper.startPage(page, size);
-//        List<Problem> problems = problemService.getProblems();
-//        if(key!=null){
-//            problems = problemService.getProblemsByKey(key);
-//        }
-//
-//        PageInfo<Problem> pageInfo = new PageInfo<Problem>(problems, size);
-//        UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
-//        HttpSession session = request.getSession();
-//
-//        ArrayList<Integer> statusInfo=null;
-//        if(user!=null){
-//            session.setAttribute("login_user", user);
-//            statusInfo = recordService.findSolved(user);
-//        }
-//
-//        model.addAttribute("pageInfo", pageInfo);
-//        model.addAttribute("statusInfo", statusInfo);
-//        return "index";
+//    public String search() {
+//        return "error";
 //    }
 //}

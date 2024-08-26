@@ -6,8 +6,10 @@ import com.xin.aoc.mapper.DiscussionMapper;
 import com.xin.aoc.mapper.ProblemMapper;
 import com.xin.aoc.model.Discussion;
 import com.xin.aoc.model.Problem;
+import com.xin.aoc.model.Submission;
 import com.xin.aoc.model.UserInfo;
 import com.xin.aoc.service.ProblemService;
+import com.xin.aoc.service.SubmissionService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 
@@ -31,6 +34,8 @@ public class DiscussionController {
     DiscussionMapper discussionMapper;
     @Autowired
     ProblemService problemService;
+    @Autowired
+    private SubmissionService submissionService;
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping(value="/problems/discussions")
@@ -49,18 +54,28 @@ public class DiscussionController {
         HttpSession session = request.getSession();
         session.setAttribute("login_user", user);
 
-        List<Discussion> discussions = discussionMapper.getDiscussionById(problem.getProblemId());
-//        for (Discussion e : discussions) {
-//            String curNickName = problemService.getCurNickName(e.getUserId());
-//            e.setNickName(curNickName);
-//            discussionMapper.updateNickName(curNickName,e.getUserId());
-//        }
+//        List<Discussion> discussions = discussionMapper.getDiscussionById(problem.getProblemId());
+//        PageInfo<Discussion> pageInfo = new PageInfo<Discussion>(discussions, size);
+//        model.addAttribute("pageInfo", pageInfo);
 
-        PageInfo<Discussion> pageInfo = new PageInfo<Discussion>(discussions, size);
+        // get a list of all discussions
+        List<Discussion> discussions = new LinkedList<>(discussionMapper.getDiscussionById(problem.getProblemId()));
+        PageInfo<Discussion> pageInfo = new PageInfo<>(discussions, size);
         model.addAttribute("pageInfo", pageInfo);
 
-        return "user/discussions";
+        // handle submission column display
+        if(user!=null){
+            List<Submission> submissions = submissionService.getSubmissionsByUserId(user.getUserId(),id);
+            submissions = submissions.subList(0, Math.min(3, submissions.size()));
+            logger.info(submissions.toString()+"!!!!");
+            PageInfo<Submission> subInfo = new PageInfo<Submission>(submissions);
+            model.addAttribute("submissions", subInfo);
+        }
+
+        return "user/discussions2";
     }
+
+
 
 
     @PostMapping(value="/problems/discussions")
@@ -90,6 +105,8 @@ public class DiscussionController {
         discussion.setProblemId(problem.getProblemId());
         discussion.setContent(content);
         discussionMapper.addDiscussion(discussion);
+
+        logger.info("Comment: "+content);
         return "redirect:/problems/discussions?id="+problem.getProblemId();
     }
 

@@ -20,3 +20,5 @@ public interface AdminMapper {
             "where problem_id=#{problemId}")
     void delById(int id);
 }
+
+
