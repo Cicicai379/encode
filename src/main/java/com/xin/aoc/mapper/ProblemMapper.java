@@ -4,9 +4,9 @@ import org.apache.ibatis.annotations.Select;
 import com.xin.aoc.model.Problem;
 import java.util.List;
 
+// Ibatis documentation: https://mybatis.org/mybatis-3/apidocs/org/apache/ibatis/annotations/package-summary.html
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 public interface ProblemMapper {

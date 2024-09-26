@@ -2,6 +2,8 @@ package com.xin.aoc.mapper;
 
 import com.xin.aoc.form.UserForm;
 import com.xin.aoc.model.UserInfo;
+
+// Ibatis documentation: https://mybatis.org/mybatis-3/apidocs/org/apache/ibatis/annotations/package-summary.html
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

@@ -12,8 +12,12 @@ import com.xin.aoc.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
+// Simple Logging Facade for Java documentation: https://www.slf4j.org/docs.html
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+// Spring Framework documentation: https://spring.io/projects/spring-framework
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +25,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,7 +35,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -85,21 +87,17 @@ public class ContestController {
         System.out.println("!!!!!"+contestId);
         UserInfo user = (UserInfo)request.getSession().getAttribute("login_user");
         HttpSession session = request.getSession();
-        if(user!=null && contestMapper.contestHasStarted(contestId)!=1 && user.getIsAdmin()!=1){
-            return "redirect:/contests";
-        }
+        if(user!=null && contestMapper.contestHasStarted(contestId)!=1 && user.getIsAdmin()!=1){ return "redirect:/contests";}
         Contest contest = contestMapper.getAllContestById(contestId);
         System.out.println("!!!!!"+contest);
         model.addAttribute("contest",contest);
         model.addAttribute("contestId",contestId);
-
         int page = 1;
         int size = 8;
         PageHelper.startPage(page, size);
         ArrayList<Integer> statusInfo=null;
         List<Problem> problems=null;
         List<ContestRecord> ranks = contestMapper.getScoreById(contestId);
-
         long timeLeft = -1;
         if(user!=null){
             session.setAttribute("login_user", user);
@@ -108,18 +106,14 @@ public class ContestController {
                timeLeft = (contestMapper.getStop(user.getUserId(), contestId) - System.currentTimeMillis())/1000;
             }
         }
-
         PageInfo<ContestRecord> rankInfo = new PageInfo<ContestRecord>(ranks, size);
-
         problems = problemService.getProblemsByContest(contestId);
         PageInfo<Problem> pageInfo = new PageInfo<Problem>(problems, size);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("rankInfo", rankInfo);
         model.addAttribute("statusInfo", statusInfo);
         model.addAttribute("timeLeft", timeLeft);
-
-        return "contest/contest2";
-    }
+        return "contest/contest2";}
 
     @PostMapping(value = "user/start_contest")
     public String start(

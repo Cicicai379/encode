@@ -1,35 +1,32 @@
 package com.xin.aoc.controller;
 
-import com.xin.aoc.form.LearnForm;
 import com.xin.aoc.form.ProblemForm;
 import com.xin.aoc.form.UserForm;
 import com.xin.aoc.mapper.ProblemMapper;
-import com.xin.aoc.model.Learn;
 import com.xin.aoc.model.Problem;
 import com.xin.aoc.model.UserInfo;
 import com.xin.aoc.service.AdminService;
 import com.xin.aoc.service.ProblemService;
+
+// Jakarta Documentation: https://jakarta.ee/specifications/servlet/
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+
+// Simple Logging Facade for Java documentation: https://www.slf4j.org/docs.html
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+// Spring Framework documentation: https://spring.io/projects/spring-framework
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 
 @Controller
 public class AdminController {

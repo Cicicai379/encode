@@ -3,6 +3,8 @@ package com.xin.aoc.mapper;
 import com.xin.aoc.form.ContestForm;
 import com.xin.aoc.form.LearnForm;
 import com.xin.aoc.model.*;
+
+// Ibatis documentation: https://mybatis.org/mybatis-3/apidocs/org/apache/ibatis/annotations/package-summary.html
 import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDateTime;

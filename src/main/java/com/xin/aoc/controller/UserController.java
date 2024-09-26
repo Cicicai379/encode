@@ -12,8 +12,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
+
+// Simple Logging Facade for Java documentation: https://www.slf4j.org/docs.html
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+// Spring Framework documentation: https://spring.io/projects/spring-framework
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,16 +27,13 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+// Documentation: https://docs.oracle.com/javase/8/docs/api/java/io/package-summary.html
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 import java.util.Random;
 import java.util.Set;
