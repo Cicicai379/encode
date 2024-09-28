@@ -1,1 +1,3 @@
-Online Coding platfrom inspired by Advent of Code
+Online Coding Platfrom
+How to run this locally: run WebApp.java and go to localhost:1010
+
